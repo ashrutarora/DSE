@@ -24,8 +24,6 @@ class Node{
 	
 	~Node(){
 		
-		int val = Name;
-		
 		if(this -> next != NULL){
 		
 			delete next;
