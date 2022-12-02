@@ -86,22 +86,14 @@ int main(){
 	Node* newNode = new Node('a', 1, 18, 5000, 69);
 	Node* head = newNode;
 	
-//	Display(head);
-	
 	insertAtHead('A', 2, 18, 500, 20, head);
-	//Display(head);
+// 	Display(head);
 	
 	insertAtHead('B', 3, 18, 500, 55, head);
-////	Display(head);
-//	
+//	Display(head);
+	
 	insertAtHead('C', 4, 18, 500, 10, head);
 	Display(head);
 	
-//	performanceChecker(head);
-	
-//	cout <<endl;
-//	
-	//Display(head);
-//	
 	return 0;
 }
