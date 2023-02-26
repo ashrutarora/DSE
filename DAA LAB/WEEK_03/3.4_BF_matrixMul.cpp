@@ -1,9 +1,7 @@
+// Write a program to implement matrix multiplication using brute-force technique and analyze its time efficiency.
+
 #include <iostream>
 using namespace std;
-
-void matrixCreate(){
-
-}
 
 int main(){
 
@@ -21,6 +19,7 @@ int main(){
     cout << "Enter the number of COLUMNS in the MATRIX 2 : " << endl;
     cin >> c2;
 
+    // Necessary condition for matrix multiplication
     if( r1 != c2){
 
         cout << "Matrix Multiplication not possible.";
