@@ -1,3 +1,10 @@
+/*
+Write a program to implement the following graph representations.
+	i. Adjacency list
+	ii. Adjacency matrix
+*/
+
+
 #include <iostream>
 using namespace std;
 const int N = 100;
