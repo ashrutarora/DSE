@@ -1,3 +1,7 @@
+/*
+Write an algorithm for finding the Greatest Common Divisor (GCD) of two numbers using Euclid’s algorithm. Write a program to implement the Euclid’s algorithm.
+*/
+
 #include <iostream>
 using namespace std;
 
