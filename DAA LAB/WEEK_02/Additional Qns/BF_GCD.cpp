@@ -1,3 +1,5 @@
+// Write a program to find GCD using BRUTEFORCE method
+
 #include <iostream>
 using namespace std;
 
@@ -42,5 +44,5 @@ int main() {
         
         cout << "GCD of " << a << " and " << b << " is " << result << endl;
     }
-    return 0;
+    return 69;
 }
