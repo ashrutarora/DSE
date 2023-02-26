@@ -1,4 +1,5 @@
-//c++ program to implement tower of hanoi problem
+//Write a program to implement recursive solution to the Tower of Hanoi puzzle and analyze its time efficiency.
+
 #include<iostream>
 using namespace std;
 
