@@ -1,3 +1,5 @@
+// Write a program to sort set of integers using bubble sort. Analyze its time efficiency.
+
 #include <iostream>
 using namespace std;
 
@@ -8,9 +10,10 @@ void swapNum(int &a, int &b){
     a = b;
     b = temp;
 }
+// In a PASS -->
+        // We check the adjacent elements and then if the adj element is lesser, then we swap it
+        // We swap it until the largest element comes to the end of the array.
 
-// We check the adjacent elements and then if the adj element is lesser, then we swap it
-// We swap it until the largest element comes to the end of the array.
 void BubbleSort(int arr[], int size){
 
     for(int i = 0; i < size-1; i++){
