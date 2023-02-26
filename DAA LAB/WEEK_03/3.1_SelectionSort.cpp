@@ -1,3 +1,5 @@
+// Write a program to sort a set of integers using selection sort algorithm and analyze its time efficiency.
+
 #include <iostream>
 using namespace std;
 
@@ -10,14 +12,15 @@ void swapNum(int &a, int &b){
 }
 
 // We initialize the first element as min
-// Then we check for the actual minimum element in the array and then swap them and increment min
-// which here is done by i.
+// Then we check for the actual minimum element in the array and then swap them and increment min, which here is done by i.
 
 void SelecSort(int arr[], int size){
 
+    //This loop is run till size-1 as by the last pass, the largest element comes to the end and we need not run the loop for 1 more time.
     for(int i = 0; i < size-1; i++){
 
         int min = i;
+        // This loop starts from i+1 as we have to compare the elements after the selected element.
         for(int j = i+1; j < size; j++){
 
             if(arr[j] < arr[min]){
