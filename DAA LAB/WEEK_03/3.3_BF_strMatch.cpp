@@ -1,3 +1,5 @@
+//Write a program to implement brute-force string matching. Analyze its time efficiency.
+
 #include <iostream>
 using namespace std;
 
