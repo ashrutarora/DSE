@@ -1,3 +1,7 @@
+/*
+Write a program for computing ⌊√n ⌋ for any positive integer and analyze its time efficiency. Besides assignment and comparison, your program may only use the four basic arithmetic operations.
+*/
+
 #include <iostream>
 using namespace std;
 
