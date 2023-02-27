@@ -175,27 +175,3 @@ WHERE ES.SKILLID IN (
   FROM EMP_SKILL
   WHERE EMPNO = 101
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
