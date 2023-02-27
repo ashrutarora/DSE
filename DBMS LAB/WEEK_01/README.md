@@ -4,8 +4,8 @@ This is a database schema for an Employee Management System, which consists of s
 ## EMP Table
 The EMP table stores information about employees, including their employee code, name, qualification, phone number, email, designation, and salary.
 
-*EMPCODE - the employee code (primary key)
-*NAME - the employee name
+* EMPCODE - the employee code (primary key)
+* NAME - the employee name
 QUALIFICATION - the employee's qualification (allowed values: 'BTECH', 'MTECH', 'MSC', 'MCA', 'PHD')
 PHONE - the employee's phone number
 EMAIL - the employee's email address (must end with '@digisol.com')
