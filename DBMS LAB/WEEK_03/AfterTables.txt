@@ -1,0 +1,67 @@
+3.9
+COMMIT;
+
+DELETE FROM EMP
+WHERE EMPCODE = 100;
+
+ORA-02292: integrity constraint (DSE206.FK_EMPNO) violated - child record found
+
+3.10
+UPDATE EMP
+SET EMAIL = 'rajesh@digital.com'
+WHERE EMPCODE = 100;
+
+ORA-02290: check constraint (DSE206.EMAIL_DOMAIN) violated
+
+3.11
+UPDATE WORK_EXP
+SET PRJID = 'P9'
+WHERE EMPCODE = 111;
+
+ORA-02291: integrity constraint (DSE206.FK_PRJID) violated - parent key noT found
+
+3.12
+COMMIT;
+
+DELETE FROM CLIENT
+WHERE CLIENTID = 'C1';
+
+"THIS COMMAND DELETES IT"
+
+3.13
+COMMIT;
+
+DELETE FROM FAMILY_DEPENDENTS
+WHERE EMPNO = 100;
+
+"2 rows deleted."
+
+ROLLBACK;
+
+"ROLLBACK COMPLETE"
+
+3.14
+UPDATE EMP
+SET SALARY = SALARY + SALARY * 0.1
+WHERE DESIGNATION = 'DEVELOPER';
+
+"5 ROWS UPDATED"
+
+3.15
+UPDATE EMP
+SET REPORTS_TO = 106
+WHERE EMPCODE = 108;
+
+"1 row updated."
+
+COMMIT;
+
+3.16
+UPDATE EMP
+SET REPORTS_TO = 117
+WHERE EMPCODE = 108;
+
+ORA-02291: integrity constraint (DSE206.FK_REPORTS_TO_EMPCODE) violated -
+parent key not found
+
+COMMIT;

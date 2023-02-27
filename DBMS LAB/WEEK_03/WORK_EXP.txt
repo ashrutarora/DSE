@@ -1,0 +1,65 @@
+INSERT INTO WORK_EXP VALUES(
+100, 'P1', 20, 'C1', 'A'
+);
+
+INSERT INTO WORK_EXP VALUES(
+100, 'P3', 15, 'C3', 'A'
+);
+
+INSERT INTO WORK_EXP VALUES(
+101, 'P1', 16, 'C1', 'A'
+);
+
+INSERT INTO WORK_EXP VALUES(
+102, 'P2', 18, 'C2', 'B'
+);
+
+INSERT INTO WORK_EXP VALUES(
+102, 'P1', 18, 'C1', 'A'
+);
+
+INSERT INTO WORK_EXP VALUES(
+108, 'P2', 12, 'C2', 'C'
+);
+
+INSERT INTO WORK_EXP VALUES(
+106, 'P3', 20, 'C3', 'C'
+);
+
+INSERT INTO WORK_EXP VALUES(
+106, 'P4', 10, 'C4', 'C'
+);
+
+INSERT INTO WORK_EXP VALUES(
+105, 'P2', 19, 'C2', 'B'
+);
+
+INSERT INTO WORK_EXP VALUES(
+110, 'P4', 12, 'C4', 'B'
+);
+
+INSERT INTO WORK_EXP VALUES(
+110, 'P5', 16, 'C8', 'A'
+);
+
+------------X---------------
+
+INSERT INTO WORK_EXP VALUES(
+105, 'P5', 5, 'C5', 'D'
+);
+
+ERROR ORA-02290: check constraint (DSE206.RATING_VAL) violated
+
+INSERT INTO WORK_EXP VALUES(
+105, 'P5', 5, 'C5', 'A'
+);
+
+------------x---------------
+
+INSERT INTO WORK_EXP VALUES(
+111, 'P5', 5, 'C5', 'C'
+);
+
+INSERT INTO WORK_EXP VALUES(
+113, 'P2', 12, 'C3', 'B'
+);
