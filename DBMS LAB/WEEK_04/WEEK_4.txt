@@ -51,7 +51,7 @@ FROM EMP
 WHERE REPORTS_TO = (SELECT EMPCODE FROM EMP WHERE NAME = 'RAVI');
 
 4.11
-SELECT E.Name, E.Designation, (E.Salary *12) AS Annual_Salary
+SELECT E.NAME, E.DESIGNATION, (E.Salary *12) AS Annual_Salary
 FROM EMP E;
 
 4.12
