@@ -60,26 +60,3 @@ WHERE EXISTS (
   JOIN PRJ_DETAILS p2 ON w2.PRJID = p2.PRJID
   WHERE w2.EMPCODE = 100 AND p2.PRJID = p.PRJID AND w2.CLIENTID = w.CLIENTID
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
