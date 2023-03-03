@@ -5,7 +5,7 @@ using namespace std;
 
 int consecInt(int a, int b){
 	
-	int t = (a < b) ? a : b;
+int t = (a < b) ? a : b;
 
     while (t > 0) {
 
@@ -26,7 +26,7 @@ int main() {
     cout << "Enter 2 positive integers: ";
     cin >> a >> b;
 
-	int result = consecInt(a, b);
+    int result = consecInt(a, b);
 
     cout << "GCD of " << a << " and " << b << " using CONSECUTIVE INTEGER method " << " = " << result << endl;
 
