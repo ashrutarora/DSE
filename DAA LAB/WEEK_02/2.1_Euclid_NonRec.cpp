@@ -12,14 +12,13 @@ int gcd(int a, int b) {
 
     int r;
 
-    while (b != 0) {
+    while(a != 0){
 
-        r = a % b;
-        a = b;
-        b = r;
-    }
-
-    return a;
+        r = b%a;
+        b = a;
+        a = r;
+    }    
+    return b;
 }
 
 int main() {
