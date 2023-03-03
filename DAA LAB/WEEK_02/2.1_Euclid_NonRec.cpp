@@ -10,13 +10,13 @@ using namespace std;
 
 int gcd(int a, int b) {
 
-    int c = a, d = b, r;
+    int r;
 
-    while (d != 0) {
+    while (b != 0) {
 
-        r = c % d;
-        c = d;
-        d = r;
+        r = a % b;
+        a = b;
+        b = r;
     }
 
     return c;
