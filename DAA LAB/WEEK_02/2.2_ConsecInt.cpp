@@ -5,28 +5,18 @@ using namespace std;
 
 int consecInt(int a, int b){
 	
-	int t;
-	
-	if(a < b){
-		t = a;
-	}
-	else{
-		t = b;
-	}
-	
-	c:
-	int r = a % t;
-	
-	if(r == 0){
-		
-		r = b % t;
-		
-		if(r == 0){
-			return t;
-		}
-	}
-		t--;
-		goto c;
+	int t = (a < b) ? a : b;
+
+    while (t > 0) {
+
+        if(a % t == 0){
+            if(b % t == 0){
+                return t;
+            }
+        }
+        t--;
+    }
+    return 1;
 }
 
 int main() {
@@ -40,6 +30,6 @@ int main() {
 
     cout << "GCD of " << a << " and " << b << " using CONSECUTIVE INTEGER method " << " = " << result << endl;
 
-    return 0;
+    return 69;
 }
 
