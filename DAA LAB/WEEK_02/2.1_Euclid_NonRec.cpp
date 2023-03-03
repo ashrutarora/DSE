@@ -19,7 +19,7 @@ int gcd(int a, int b) {
         b = r;
     }
 
-    return c;
+    return a;
 }
 
 int main() {
