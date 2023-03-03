@@ -1,5 +1,3 @@
-//Write a program to implement brute-force string matching. Analyze its time efficiency.
-
 #include <iostream>
 using namespace std;
 
@@ -10,7 +8,7 @@ int strMatching(string pattern, string text){
 
     for(int i =0; i <= n - m; i++){
 
-        int j;
+        int j = 0; // initialize j to zero
         while(j < m && text[i + j] == pattern[j]) {
 
             j++;
@@ -27,11 +25,12 @@ int main(){
 
     string pattern, text;
 
+    cout << "Enter text: ";
+    getline(cin, text);
+
     cout << "Enter pattern: ";
     getline(cin, pattern);
 
-    cout << "Enter text: ";
-    getline(cin, text);
 
     int index = strMatching(pattern, text);
 
@@ -44,6 +43,6 @@ int main(){
         cout << "Pattern not found in text." << endl;
     }
 
-    return 69;
+    return 0;
 
 }
