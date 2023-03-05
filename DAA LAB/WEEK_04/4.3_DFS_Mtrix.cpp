@@ -1,3 +1,7 @@
+/*
+Write a program for depth-first search of a graph. Identify the push and pop order of vertices. 
+*/
+
 #include <iostream>
 #include <stack>
 using namespace std;
