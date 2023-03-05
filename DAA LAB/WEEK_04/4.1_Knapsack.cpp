@@ -1,3 +1,11 @@
+/*
+Write a program to implement Knapsack problem using brute-force design
+technique and analyze its time efficiency.
+Knapsack Problem: Given n items of known weights w1, w2 ... wn values v1, v2, ...
+vn and a knapsack of capacity B, find the most valuable subset of items that fit into
+the knapsack.
+*/
+
 #include <iostream>
 #include <cmath>
 using namespace std;
