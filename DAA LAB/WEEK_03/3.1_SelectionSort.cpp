@@ -49,7 +49,7 @@ int main(){
 
     SelecSort(arr, size);
 
-    cout << "Sorted Array using INSERTION SORT" << endl;
+    cout << "Sorted Array using SELECTION SORT" << endl;
 
     for(int i =0; i < size; i++){
 
