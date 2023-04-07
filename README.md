@@ -1,4 +1,7 @@
-#### This repo contains LAB CODES OF all semesters Data Science & Engineering at MIT Manipal.
+### This repo contains LAB CODES OF all semesters Data Science & Engineering at MIT Manipal.
+#### Feel free to check out the codes :)
+#### You can directly view it by Clicking on the links below.
+
 1) SEM 3  
 * [DA (Data Analytics)](https://github.com/ashrut1011/DSE/tree/main/DA%20lab)
 * [DS (Data Structures)](https://github.com/ashrut1011/DSE/tree/main/DS)
