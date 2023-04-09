@@ -139,5 +139,223 @@ END;
 * Update the Other_incentive of employee in Pay_check depending on rating
 
 ```
+SET SERVEROUTPUT ON;
 
+DECLARE
+
+  v_empcode EMP.EMPCODE%TYPE;
+  v_prjid PRJ_DETAILS.PRJID%TYPE;
+  v_empname EMP.NAME%TYPE;
+  v_salary EMP.SALARY%TYPE;
+  v_prjname PRJ_DETAILS.PRJ_NAME%TYPE;
+  v_rating WORK_EXP.RATING%TYPE;
+  v_incentive NUMBER;
+  v_total_salary NUMBER;
+  v_other_incentive PAY_CHECK.OTHER_INCENTIVES%TYPE;
+  
+BEGIN
+
+  -- Assign employee code and project id
+  v_empcode := 102;
+  v_prjid := 'P2';
+
+  -- Retrieve employee details
+  SELECT NAME, SALARY INTO v_empname, v_salary
+  FROM EMP
+  WHERE EMPCODE = v_empcode;
+
+  -- Retrieve project details
+  SELECT PRJ_NAME INTO v_prjname
+  FROM PRJ_DETAILS
+  WHERE PRJID = v_prjid;
+
+  -- Retrieve project rating
+  SELECT RATING INTO v_rating
+  FROM WORK_EXP
+  WHERE EMPCODE = v_empcode AND PRJID = v_prjid;
+
+  -- Assign incentive based on rating
+  CASE v_rating
+  
+    WHEN 'A' THEN v_incentive := 10000;
+    WHEN 'B' THEN v_incentive := 5000;
+    WHEN 'C' THEN v_incentive := 3000;
+    ELSE v_incentive := 0;
+    
+  END CASE;
+
+  -- Calculate total salary
+  v_total_salary := v_salary + v_incentive;
+
+  -- Update Other_incentive in Pay_check table
+  UPDATE PAY_CHECK
+  SET OTHER_INCENTIVES = v_incentive
+  WHERE EMPCODE = v_empcode;
+
+  -- Display employee details
+  DBMS_OUTPUT.PUT_LINE('Employee Number: ' || v_empcode);
+  DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_empname);
+  DBMS_OUTPUT.PUT_LINE('Salary: ' || v_salary);
+  DBMS_OUTPUT.PUT_LINE('Project Name: ' || v_prjname);
+  DBMS_OUTPUT.PUT_LINE('Rating: ' || v_rating);
+  DBMS_OUTPUT.PUT_LINE('Incentive: ' || v_incentive);
+  DBMS_OUTPUT.PUT_LINE('Total Salary: ' || v_total_salary);
+
+END;
 ```
+
+#### 7.6 Write a PL/SQL block to calculate Jan-2021 monthly salary of employee and other components of salary depending on Salary values in EMP table for the employee number 100. Display the salary information of employee 100 in the following format :
+```
+SET SERVEROUTPUT ON;
+
+DECLARE
+    
+    v_name EMP.NAME%TYPE;
+    v_salary EMP.SALARY%TYPE;
+    v_increment PAY_CHECK.REGULAR_INCREMENT%TYPE;
+    v_performance_incentive PAY_CHECK.PERFORMANCE_INCENTIVE%TYPE;
+    v_da PAY_CHECK.DA%TYPE;
+    v_pf PAY_CHECK.PF%TYPE;
+    v_other_incentives PAY_CHECK.OTHER_INCENTIVES%TYPE;
+    v_advance_tax PAY_CHECK.ADVANCE_TAX%TYPE;
+    v_gross_salary NUMBER(10,2);
+    v_take_home_salary NUMBER(10,2);
+
+BEGIN
+    
+    -- Get employee information from EMP table
+    SELECT NAME, SALARY
+    INTO v_name, v_salary
+    FROM EMP
+    WHERE EMPCODE = 100;
+    
+    -- Get regular increment from PAY_CHECK table
+    SELECT REGULAR_INCREMENT
+    INTO v_increment
+    FROM PAY_CHECK
+    WHERE EMPCODE = 100
+    AND PAY_DATE = '01-JAN-2021';
+    
+    -- Get performance incentive from PAY_CHECK table
+    SELECT PERFORMANCE_INCENTIVE
+    INTO v_performance_incentive
+    FROM PAY_CHECK
+    WHERE EMPCODE = 100
+    AND PAY_DATE = '01-JAN-2021';
+    
+    -- Calculate DA, PF ,other incentives, advance tax
+    v_da := (v_salary + v_increment) * 0.5;
+    v_pf := (v_salary + v_increment) * 0.12;
+    
+    SELECT OTHER_INCENTIVES, ADVANCE_TAX
+    INTO v_other_incentives, v_advance_tax
+    FROM PAY_CHECK
+    WHERE EMPCODE = 100
+    AND PAY_DATE = '01-JAN-2021';
+    
+    -- Calculate gross salary and take home salary
+    v_gross_salary := v_salary + v_increment + v_performance_incentive + v_da + v_pf + v_other_incentives;
+    v_take_home_salary := v_gross_salary - v_pf - v_advance_tax;
+    
+    -- Display salary information
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+    DBMS_OUTPUT.PUT_LINE('Basic Salary: ' || v_salary);
+    DBMS_OUTPUT.PUT_LINE('Regular Increment: ' || v_increment);
+    DBMS_OUTPUT.PUT_LINE('Increased Basic Salary: ' || (v_salary + v_increment));
+    DBMS_OUTPUT.PUT_LINE('Performance Incentive: ' || v_performance_incentive);
+    DBMS_OUTPUT.PUT_LINE('DA: ' || v_da);
+    DBMS_OUTPUT.PUT_LINE('PF: ' || v_pf);
+    DBMS_OUTPUT.PUT_LINE('Other Incentives: ' || v_other_incentives);
+    DBMS_OUTPUT.PUT_LINE('Advance Tax Paid: ' || v_advance_tax);
+    DBMS_OUTPUT.PUT_LINE('Monthly Gross Salary: ' || v_gross_salary);
+    DBMS_OUTPUT.PUT_LINE('Monthly Take Home Salary: ' || v_take_home_salary);
+
+END;
+/
+```
+
+#### 7.7 Do the salary processing of all employees according to the Question 6. (using cursor)
+```
+SET SERVEROUTPUT ON;
+
+DECLARE
+    
+  CURSOR c_pay_check IS
+    SELECT DISTINCT EMPCODE
+    FROM PAY_CHECK
+    WHERE PAY_DATE = '01-JAN-2021';
+    
+  v_empcode PAY_CHECK.EMPCODE%TYPE;
+  v_name EMP.NAME%TYPE;
+  v_salary EMP.SALARY%TYPE;
+  v_increment PAY_CHECK.REGULAR_INCREMENT%TYPE;
+  v_performance_incentive PAY_CHECK.PERFORMANCE_INCENTIVE%TYPE;
+  v_da PAY_CHECK.DA%TYPE;
+  v_pf PAY_CHECK.PF%TYPE;
+  v_other_incentives PAY_CHECK.OTHER_INCENTIVES%TYPE;
+  v_advance_tax PAY_CHECK.ADVANCE_TAX%TYPE;
+  v_gross_salary NUMBER(10,2);
+  v_take_home_salary NUMBER(10,2);
+
+BEGIN
+    
+  -- Loop through all employees in PAY_CHECK table
+  FOR i IN c_pay_check LOOP
+    
+    -- Get employee information from PAY_CHECK table
+    v_empcode := i.EMPCODE;
+    
+    SELECT NAME, SALARY
+    INTO v_name, v_salary
+    FROM EMP
+    WHERE EMPCODE = v_empcode;
+
+    -- Get regular increment from PAY_CHECK table
+    SELECT REGULAR_INCREMENT
+    INTO v_increment
+    FROM PAY_CHECK
+    WHERE EMPCODE = v_empcode
+    AND PAY_DATE = '01-JAN-2021';
+
+    -- Get performance incentive from PAY_CHECK table
+    SELECT PERFORMANCE_INCENTIVE
+    INTO v_performance_incentive
+    FROM PAY_CHECK
+    WHERE EMPCODE = v_empcode
+    AND PAY_DATE = '01-JAN-2021';
+
+    -- Calculate DA, PF and other incentives
+    v_da := (v_salary + v_increment) * 0.5;
+    v_pf := (v_salary + v_increment) * 0.12;
+
+    SELECT OTHER_INCENTIVES, ADVANCE_TAX
+    INTO v_other_incentives, v_advance_tax
+    FROM PAY_CHECK
+    WHERE EMPCODE = v_empcode
+    AND PAY_DATE = '01-JAN-2021';
+
+    -- Calculate gross salary and take home salary
+    v_gross_salary := v_salary + v_increment + v_performance_incentive + v_da + v_pf + v_other_incentives;
+    v_take_home_salary := v_gross_salary - v_pf - v_advance_tax;
+
+    -- Display salary information
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+    DBMS_OUTPUT.PUT_LINE('Basic Salary: ' || v_salary);
+    DBMS_OUTPUT.PUT_LINE('Regular Increment: ' || v_increment);
+    DBMS_OUTPUT.PUT_LINE('Increased Basic Salary: ' || (v_salary + v_increment));
+    DBMS_OUTPUT.PUT_LINE('Performance Incentive: ' || v_performance_incentive);
+    DBMS_OUTPUT.PUT_LINE('DA: ' || v_da);
+    DBMS_OUTPUT.PUT_LINE('PF: ' || v_pf);
+    DBMS_OUTPUT.PUT_LINE('Other Incentives: ' || v_other_incentives);
+    DBMS_OUTPUT.PUT_LINE('Advance Tax Paid: ' || v_advance_tax);
+    DBMS_OUTPUT.PUT_LINE('Monthly Gross Salary: ' || v_gross_salary);
+    DBMS_OUTPUT.PUT_LINE('Monthly Take Home Salary: ' || v_take_home_salary);
+    DBMS_OUTPUT.PUT_LINE('--------------------------');
+
+  END LOOP;
+
+END;
+/
+```
+
+#### 
