@@ -35,10 +35,10 @@ BEGIN
         revWord := revWord || SUBSTR(word, i, 1);
     END LOOP;
 
-    IF revWord = origWord THEN
-        DBMS_OUTPUT.PUT_LINE(origWord || ' is a Palindrome');
+    IF revWord = word THEN
+        DBMS_OUTPUT.PUT_LINE(word || ' is a Palindrome');
     ELSE
-        DBMS_OUTPUT.PUT_LINE(origWord || ' is not a Palindrome');
+        DBMS_OUTPUT.PUT_LINE(word || ' is not a Palindrome');
     END IF;
     
 END;
