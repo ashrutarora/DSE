@@ -19,6 +19,7 @@ num := &Enter_Number;
 END;
 ```
 
+
 #### 7.2 Write a PL/SQL block to check a given word is palindrome or not.
 ```
 SET SERVEROUTPUT ON;
@@ -42,6 +43,7 @@ BEGIN
     
 END;
 ```
+
 
 #### 7.3 Write a PL/SQL block to accept an employee code from the user and display the employee details.
 ```
@@ -89,6 +91,7 @@ BEGIN
 END;
 ```
 
+
 #### 7.4 Write a PL/SQL block to count number of vowels, consonants, numbers and special characters in a sentence.
 ```
 SET SERVEROUTPUT ON;
@@ -127,6 +130,7 @@ BEGIN
     
 END;
 ```
+
 
 #### 7.5 Write a PL/SQL block to accept an employee code and project id to find the rating obtained on the project. Depending on the rating assign an additional incentive (A-10000, B-5000, C- 3000). Display the information in the following format:
 * Employee Number:
@@ -204,6 +208,7 @@ BEGIN
 END;
 ```
 
+
 #### 7.6 Write a PL/SQL block to calculate Jan-2021 monthly salary of employee and other components of salary depending on Salary values in EMP table for the employee number 100. Display the salary information of employee 100 in the following format :
 ```
 SET SERVEROUTPUT ON;
@@ -273,6 +278,7 @@ BEGIN
 END;
 /
 ```
+
 
 #### 7.7 Do the salary processing of all employees according to the Question 6. (using cursor)
 ```
@@ -358,6 +364,7 @@ END;
 /
 ```
 
+
 #### 7.8 Create a Table ACCOUNT (Account_Number, Balance) with constraint on Balance that Balance must be more than 1000(minimum balance). Insert few records into the table.
 ```
 CREATE TABLE ACCOUNT (
@@ -374,6 +381,7 @@ VALUES (2, 1500.00);
 INSERT INTO ACCOUNT (Account_Number, Balance)
 VALUES (3, 5000.00);
 ```
+
 #### Write a PL/SQL block to accept and account number, withdrawal amount from the user. Update the Balance by deducting the withdrawal amount from the balance in the case updated balance is going to be more than minimum balance (1000) otherwise do not update the Balance. In both cases display proper message :
 * Case 1:
 	* Current Balance: Balance
@@ -427,6 +435,7 @@ END;
 /
 ```
 
+
 #### 7.9 Write a PL/SQL block to display- Name of the project leader, Name of the projects handled for which budget is managed well within the Budget allocated.
 ```
 SET SERVEROUTPUT ON;
@@ -451,6 +460,8 @@ BEGIN
 END;
 /
 ```
+
+
 #### 7.10 Write a PL/SQL block to display the employees name and generate their email id in following format and display the same for all employees :
 * Name:
 * Designation:
@@ -484,6 +495,8 @@ BEGIN
 END;
 /
  ```
+ 
+ 
  #### 7.11 Write the PL/SQL block for Question 7.8. along with exception handling for
 * Entry of not existing Account number.
 * If Resulting balance is lesser than minimum Balance.
@@ -492,11 +505,13 @@ END;
  
  ```
  
+ 
  #### 7.12 Assume that we have a new project Marvel and there is need for human resources with skills- 3 full stack developer, 1 Oracle and 1 Azure each having at least 12 months of experience. Pass skill_experience as parameter and list all the human resources available in the company satisfying the need.
  
  ```
  
  ```
+ 
  
  #### 7.13 Write PL/SQL block with parameterized cursor to display all the employee code, name, designation of the employees who are rated with a particular rating by a particular client. Pass rating and client as parameter to the cursor. (Use cursor for loop.)
  
@@ -526,6 +541,7 @@ BEGIN
 END;
  ```
  
+ 
  #### 7.14 Write a PL/SQL block to display name, total work experience of 5 employees who are having highest total work experience.
  
  ```
@@ -551,5 +567,4 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE('---------------X---------------');
   END LOOP;
 END;
-
  ```
