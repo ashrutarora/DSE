@@ -520,8 +520,8 @@ END;
 
 DECLARE
     
-  p_rating WORK_EXP.RATING%TYPE := 'B';
-  p_client CLIENT.CLIENTID%TYPE := 'C2';
+  p_rating WORK_EXP.RATING%TYPE := &Enter_Rating;
+  p_client CLIENT.CLIENTID%TYPE := &Enter_CliendID;
   
   -- Parameterized Cursor
 
