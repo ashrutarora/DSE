@@ -65,6 +65,7 @@ DECLARE
 
 BEGIN
   OPEN emp_cur;
+  
   FETCH emp_cur INTO name, qualification, phone, email, designation, salary, reports_to;
   
   IF emp_cur%FOUND THEN
