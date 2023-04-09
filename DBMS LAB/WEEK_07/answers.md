@@ -26,11 +26,9 @@ SET SERVEROUTPUT ON;
 DECLARE
     word varchar2(50);
     revWord varchar2(50) := '';
-    origWord varchar2(50);
 
 BEGIN
     word := &Enter_Word;
-    origWord := word;
     
     FOR i IN REVERSE 1..LENGTH(word) LOOP
         revWord := revWord || SUBSTR(word, i, 1);
