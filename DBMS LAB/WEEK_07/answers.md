@@ -428,7 +428,61 @@ END;
 ```
 
 #### 7.9 Write a PL/SQL block to display- Name of the project leader, Name of the projects handled for which budget is managed well within the Budget allocated.
-
 ```
+SET SERVEROUTPUT ON;
 
+DECLARE
+  v_lead_name EMP.NAME%TYPE;
+  v_prj_name PRJ_DETAILS.PRJ_NAME%TYPE;
+
+BEGIN
+    
+  FOR i IN 
+    (SELECT e.NAME, p.PRJ_NAME
+    FROM PRJ_DETAILS p LEFT OUTER JOIN EMP e ON p.LEAD_BY_EMPCODE = e.EMPCODE
+    WHERE p.ACTUAL_BUDGET <= p.BUDGET_ALLOCATED) LOOP
+    
+        v_lead_name := i.NAME;
+        v_prj_name := i.PRJ_NAME;
+        DBMS_OUTPUT.PUT_LINE('Project Leader: ' || v_lead_name || ', Project Name: ' || v_prj_name);
+
+  END LOOP;
+
+END;
+/
 ```
+#### 7.10 Write a PL/SQL block to display the employees name and generate their email id in following format and display the same for all employees :
+* Name:
+* Designation:
+* Email Generated: Name.Designation@digisoul.com
+
+ ```
+ SET SERVEROUTPUT ON;
+
+DECLARE
+  v_name EMP.NAME%TYPE;
+  v_email varchar2(100);
+  v_desig EMP.DESIGNATION%TYPE;
+
+BEGIN
+    
+  FOR i IN 
+    (SELECT NAME, EMAIL, DESIGNATION
+    FROM EMP) LOOP
+    
+        v_name := i.NAME;
+		v_desig := i.DESIGNATION;
+        v_email := i.NAME || '.' || i.DESIGNATION || '@' || 'digisoul.com';
+
+        DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+		DBMS_OUTPUT.PUT_LINE('Designation: ' || v_desig);
+		DBMS_OUTPUT.PUT_LINE('Email: ' || LOWER(v_email));
+		DBMS_OUTPUT.PUT_LINE('-----------------------X---------------------------');
+
+  END LOOP;
+
+END;
+/
+ ```
+ 
+ ####
