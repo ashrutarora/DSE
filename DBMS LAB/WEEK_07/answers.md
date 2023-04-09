@@ -484,5 +484,72 @@ BEGIN
 END;
 /
  ```
+ #### 7.11 Write the PL/SQL block for Question 7.8. along with exception handling for
+* Entry of not existing Account number.
+* If Resulting balance is lesser than minimum Balance.
+
+ ```
  
- ####
+ ```
+ 
+ #### 7.12 Assume that we have a new project Marvel and there is need for human resources with skills- 3 full stack developer, 1 Oracle and 1 Azure each having at least 12 months of experience. Pass skill_experience as parameter and list all the human resources available in the company satisfying the need.
+ 
+ ```
+ 
+ ```
+ 
+ #### 7.13 Write PL/SQL block with parameterized cursor to display all the employee code, name, designation of the employees who are rated with a particular rating by a particular client. Pass rating and client as parameter to the cursor. (Use cursor for loop.)
+ 
+ ```
+ SET SERVEROUTPUT ON;
+
+DECLARE
+    
+  p_rating WORK_EXP.RATING%TYPE := 'B';
+  p_client CLIENT.CLIENTID%TYPE := 'C2';
+  
+  -- Parameterized Cursor
+
+  CURSOR c_emp_rating(p_rating WORK_EXP.RATING%TYPE, p_client CLIENT.CLIENTID%TYPE) IS 
+      
+    SELECT EMPCODE, NAME, DESIGNATION
+    FROM EMP NATURAL JOIN WORK_EXP
+    WHERE RATING = p_rating AND CLIENTID = p_client;
+
+BEGIN
+ -- Feeding value to the parameters in the For Loop
+  FOR emp IN c_emp_rating(p_rating, p_client) LOOP
+    
+    DBMS_OUTPUT.PUT_LINE('Emp Code: ' || emp.EMPCODE || ' | Name: ' || emp.NAME || ' | Designation: ' || emp.DESIGNATION);
+
+  END LOOP;
+END;
+ ```
+ 
+ #### 7.14 Write a PL/SQL block to display name, total work experience of 5 employees who are having highest total work experience.
+ 
+ ```
+ SET SERVER OUTPUT ON;
+
+DECLARE
+    
+  CURSOR c_work IS
+    
+    SELECT e.NAME, SUM(w.WORK_EXPERIENCE) total_work_exp
+    FROM EMP e, WORK_EXP w
+    WHERE e.EMPCODE = w.EMPCODE
+    GROUP BY e.NAME
+    ORDER BY total_work_exp DESC
+    
+    FETCH FIRST 5 ROWS ONLY;
+
+BEGIN
+    
+  FOR i IN c_work LOOP
+    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || i.NAME);
+	DBMS_OUTPUT.PUT_LINE('Total Work Experience: ' || i.total_work_exp);
+	DBMS_OUTPUT.PUT_LINE('---------------X---------------');
+  END LOOP;
+END;
+
+ ```
