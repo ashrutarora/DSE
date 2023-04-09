@@ -358,4 +358,77 @@ END;
 /
 ```
 
-#### 
+#### 7.8 Create a Table ACCOUNT (Account_Number, Balance) with constraint on Balance that Balance must be more than 1000(minimum balance). Insert few records into the table.
+```
+CREATE TABLE ACCOUNT (
+    Account_Number INT PRIMARY KEY,
+    Balance DECIMAL(10,2) CHECK (Balance >= 1000)
+);
+
+INSERT INTO ACCOUNT (Account_Number, Balance)
+VALUES (1, 2000.00);
+
+INSERT INTO ACCOUNT (Account_Number, Balance)
+VALUES (2, 1500.00);
+
+INSERT INTO ACCOUNT (Account_Number, Balance)
+VALUES (3, 5000.00);
+```
+#### Write a PL/SQL block to accept and account number, withdrawal amount from the user. Update the Balance by deducting the withdrawal amount from the balance in the case updated balance is going to be more than minimum balance (1000) otherwise do not update the Balance. In both cases display proper message :
+* Case 1:
+	* Current Balance: Balance
+	* Withdrawal of <Withdrawal_amount> is Successful
+ 	* Updated Current Balance: Updated balance after withdrawal
+	
+* Case 2:
+	* Current Balance: Balance 
+	* Insufficient fund to withdraw, try with lesser withdrawal amount
+
+```
+SET SERVEROUTPUT ON;
+
+DECLARE
+  v_account_number ACCOUNT.ACCOUNT_NUMBER%TYPE;
+  v_withdrawal_amount ACCOUNT.BALANCE%TYPE;
+  v_balance ACCOUNT.BALANCE%TYPE;
+
+BEGIN
+    
+  -- Accept account number and withdrawal amount from user
+  v_account_number := &account_number;
+  v_withdrawal_amount := &withdrawal_amount;
+  
+  -- Get the current balance for the account
+  SELECT balance
+  INTO v_balance
+  FROM account
+  WHERE account_number = v_account_number;
+  
+  -- Check if the withdrawal amount is less than or equal to the current balance minus the minimum balance
+  IF v_withdrawal_amount <= v_balance - 1000 THEN
+    -- Update the balance
+    UPDATE account
+    SET balance = balance - v_withdrawal_amount
+    WHERE account_number = v_account_number;
+    
+
+    DBMS_OUTPUT.PUT_LINE('Current Balance: ' || v_balance);
+    DBMS_OUTPUT.PUT_LINE('Withdrawal of ' || v_withdrawal_amount || ' is Successful');
+    DBMS_OUTPUT.PUT_LINE('Updated Current Balance: ' || (v_balance - v_withdrawal_amount));
+
+  ELSE
+    
+    DBMS_OUTPUT.PUT_LINE('Current Balance: ' || v_balance);
+    DBMS_OUTPUT.PUT_LINE('Insufficient fund to withdraw, try with lesser withdrawal amount.');
+
+  END IF;
+
+END;
+/
+```
+
+#### 7.9 Write a PL/SQL block to display- Name of the project leader, Name of the projects handled for which budget is managed well within the Budget allocated.
+
+```
+
+```
