@@ -499,12 +499,130 @@ END;
  
  #### 7.11 Write the PL/SQL block for Question 7.8. along with exception handling for
 * Entry of not existing Account number.
-* If Resulting balance is lesser than minimum Balance.
 
  ```
- 
+ SET SERVEROUTPUT ON;
+
+DECLARE
+  v_account_number ACCOUNT.ACCOUNT_NUMBER%TYPE;
+  v_withdrawal_amount ACCOUNT.BALANCE%TYPE;
+  v_balance ACCOUNT.BALANCE%TYPE;
+  excep_userNotFound EXCEPTION;
+
+BEGIN
+    
+  -- Accept account number and withdrawal amount from user
+
+  v_account_number := &account_number;
+  v_withdrawal_amount := &withdrawal_amount;
+
+  -- Get the current balance for the account
+  BEGIN
+    SELECT balance
+    INTO v_balance
+    FROM account
+    WHERE account_number = v_account_number;
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      RAISE excep_userNotFound;
+  END;
+
+  -- Check if the withdrawal amount is less than or equal to the current balance minus the minimum balance
+
+  IF v_withdrawal_amount <= v_balance - 1000 THEN
+
+    -- Update the balance
+
+    UPDATE account
+    SET balance = balance - v_withdrawal_amount
+    WHERE account_number = v_account_number;
+    
+
+    DBMS_OUTPUT.PUT_LINE('Current Balance: ' || v_balance);
+    DBMS_OUTPUT.PUT_LINE('Withdrawal of ' || v_withdrawal_amount || ' is Successful');
+    DBMS_OUTPUT.PUT_LINE('Updated Current Balance: ' || (v_balance - v_withdrawal_amount));
+
+  ELSE
+    
+    DBMS_OUTPUT.PUT_LINE('Current Balance: ' || v_balance);
+    DBMS_OUTPUT.PUT_LINE('Insufficient fund to withdraw, try with lesser withdrawal amount.');
+
+  END IF;
+
+EXCEPTION
+  WHEN excep_userNotFound THEN
+    DBMS_OUTPUT.PUT_LINE('Account number ' || v_account_number || ' does not exist.');
+
+END;
+/ 
  ```
- 
+ * If Resulting balance is lesser than minimum Balance.
+ ```
+ SET SERVEROUTPUT ON;
+
+DECLARE
+  v_account_number ACCOUNT.ACCOUNT_NUMBER%TYPE;
+  v_withdrawal_amount ACCOUNT.BALANCE%TYPE;
+  v_balance ACCOUNT.BALANCE%TYPE;
+  excep_userNotFound EXCEPTION;
+  excep_insufficientBalance EXCEPTION;
+
+BEGIN
+    
+  -- Accept account number and withdrawal amount from user
+
+  v_account_number := &account_number;
+  v_withdrawal_amount := &withdrawal_amount;
+
+  -- Get the current balance for the account
+  BEGIN
+    SELECT balance
+    INTO v_balance
+    FROM account
+    WHERE account_number = v_account_number;
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      RAISE excep_userNotFound;
+  END;
+
+  -- Check if the withdrawal amount is less than or equal to the current balance minus the minimum balance
+
+  IF v_withdrawal_amount <= v_balance - 1000 THEN
+
+    -- Update the balance
+
+    UPDATE account
+    SET balance = balance - v_withdrawal_amount
+    WHERE account_number = v_account_number;
+
+    v_balance := v_balance - v_withdrawal_amount;
+
+    DBMS_OUTPUT.PUT_LINE('Current Balance: ' || v_balance);
+    DBMS_OUTPUT.PUT_LINE('Withdrawal of ' || v_withdrawal_amount || ' is Successful');
+    DBMS_OUTPUT.PUT_LINE('Updated Current Balance: ' || (v_balance - v_withdrawal_amount));
+
+    -- Check if the resulting balance is less than the minimum balance
+
+    IF v_balance < 1000 THEN
+      RAISE excep_insufficientBalance;
+    END IF;
+
+  ELSE
+    
+    DBMS_OUTPUT.PUT_LINE('Current Balance: ' || v_balance);
+    DBMS_OUTPUT.PUT_LINE('Insufficient fund to withdraw, try with lesser withdrawal amount.');
+
+  END IF;
+
+EXCEPTION
+  WHEN excep_userNotFound THEN
+    DBMS_OUTPUT.PUT_LINE('Account number ' || v_account_number || ' does not exist.');
+  WHEN excep_insufficientBalance THEN
+    DBMS_OUTPUT.PUT_LINE('Withdrawal failed. Minimum balance limit is 1000.');
+
+END;
+/ 
+ ```
  
  #### 7.12 Assume that we have a new project Marvel and there is need for human resources with skills- 3 full stack developer, 1 Oracle and 1 Azure each having at least 12 months of experience. Pass skill_experience as parameter and list all the human resources available in the company satisfying the need.
  
