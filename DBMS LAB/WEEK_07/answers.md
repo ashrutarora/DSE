@@ -506,31 +506,26 @@ END;
 * Entry of not existing Account number.
 
  ```
- SET SERVEROUTPUT ON;
+SET SERVEROUTPUT ON;
 
 DECLARE
   v_account_number ACCOUNT.ACCOUNT_NUMBER%TYPE;
   v_withdrawal_amount ACCOUNT.BALANCE%TYPE;
   v_balance ACCOUNT.BALANCE%TYPE;
-  excep_userNotFound EXCEPTION;
 
 BEGIN
-    
+   
   -- Accept account number and withdrawal amount from user
 
   v_account_number := &account_number;
   v_withdrawal_amount := &withdrawal_amount;
-
+  
   -- Get the current balance for the account
-  BEGIN
-    SELECT balance
-    INTO v_balance
-    FROM account
-    WHERE account_number = v_account_number;
-  EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-      RAISE excep_userNotFound;
-  END;
+
+  SELECT balance
+  INTO v_balance
+  FROM account
+  WHERE account_number = v_account_number;
 
   -- Check if the withdrawal amount is less than or equal to the current balance minus the minimum balance
 
@@ -541,25 +536,22 @@ BEGIN
     UPDATE account
     SET balance = balance - v_withdrawal_amount
     WHERE account_number = v_account_number;
-    
 
     DBMS_OUTPUT.PUT_LINE('Current Balance: ' || v_balance);
     DBMS_OUTPUT.PUT_LINE('Withdrawal of ' || v_withdrawal_amount || ' is Successful');
     DBMS_OUTPUT.PUT_LINE('Updated Current Balance: ' || (v_balance - v_withdrawal_amount));
-
   ELSE
-    
     DBMS_OUTPUT.PUT_LINE('Current Balance: ' || v_balance);
-    DBMS_OUTPUT.PUT_LINE('Insufficient fund to withdraw, try with lesser withdrawal amount.');
+    DBMS_OUTPUT.PUT_LINE('Insufficient funds to withdraw, please try with a smaller amount.');
 
   END IF;
 
 EXCEPTION
-  WHEN excep_userNotFound THEN
+  WHEN NO_DATA_FOUND THEN
     DBMS_OUTPUT.PUT_LINE('Account number ' || v_account_number || ' does not exist.');
 
 END;
-/ 
+/
  ```
  
  * If Resulting balance is lesser than minimum Balance.
