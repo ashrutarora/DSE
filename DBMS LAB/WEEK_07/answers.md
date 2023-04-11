@@ -17,6 +17,7 @@ num := &Enter_Number;
 	DBMS_OUTPUT.PUT_LINE('The reverse of the number is: ' || rev);
   
 END;
+/
 ```
 
 
@@ -42,6 +43,7 @@ BEGIN
     END IF;
     
 END;
+/
 ```
 
 
@@ -89,6 +91,7 @@ BEGIN
   CLOSE emp_cur;
   
 END;
+/
 ```
 
 
@@ -129,6 +132,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Special characters: ' || special_count);
     
 END;
+/
 ```
 
 
@@ -206,6 +210,7 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE('Total Salary: ' || v_total_salary);
 
 END;
+/
 ```
 
 
@@ -556,6 +561,7 @@ EXCEPTION
 END;
 / 
  ```
+ 
  * If Resulting balance is lesser than minimum Balance.
  ```
  SET SERVEROUTPUT ON;
@@ -657,6 +663,7 @@ BEGIN
 
   END LOOP;
 END;
+/
  ```
  
  
@@ -685,4 +692,5 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE('---------------X---------------');
   END LOOP;
 END;
+/
  ```
