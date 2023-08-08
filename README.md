@@ -9,3 +9,7 @@
 * [`DAA (Design & Analysis of Algorithms)`](https://github.com/ashrut1011/DSE/tree/main/DAA%20LAB)
 * [`ML (Machine Learning)`](https://github.com/ashrut1011/DSE/tree/main/ML%20LAB)
 * [`DBMS (Database Management System)`](https://github.com/ashrut1011/DSE/tree/main/DBMS%20LAB)
+
+3) SEM 5
+* [`Deep Learning`](https://github.com/ashrut1011/DSE/tree/main/Deep%20Learning%20LAB)
+
