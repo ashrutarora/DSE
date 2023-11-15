@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport User Registration</title>
+</head>
+<style>
+        body{
+            font-size: 14px;
+            background-color: gray;
+        }
+        
+        .passport {
+            width: 20cm;
+            height: 23cm;
+            margin: 1cm auto;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 1.5cm;
+        }
+        
+        td{
+            padding-top: 3px;
+        }
+        *{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        
+</style>
+<body>
+    <div class="passport">
+        <p style="color:rgb(48, 48, 223); font-size: 25px;">User Registration</p>
+
+    <strong>Important Information:</strong>  Passport application can be processed at any <br> PSK/POPSK/PSLK WITHIN INDIA irrespective of your residential address.
+
+    <ul>
+        <li> <a href="https://portal1.passportindia.gov.in/AppOnlineProject/online/apptAvailStatus">Click here </a>to check the appointment availability at all PSK/POPSK/PSLK.</li>
+
+        <li> <a href="https://portal2.passportindia.gov.in/AppOnlineProject/pdf/CIR_0186917_Y.pdf">Click here </a> to know more about Apply Anywhere in India scheme for Passport Services.</li>
+    </ul>
+
+    <h4 style="color: red;"> Fields maked with <sup>*</sup> are mandatory.</h4>
+
+    <br>
+    <form id="registrationForm" action="registered.html">
+    <table>
+        <tr>
+            <td>Register to apply at<sup>*</sup> </td>
+            <td><input type="radio" name="cpvLocation" id="cpvLocation13">
+                <label for="cpvLocation13">CPV Delhi</label>
+
+                <br>
+
+                <input type="radio" name="cpvLocation" id="cpvLocationPO" checked="checked">
+                <label for="cpvLocationPO">Passport Office</label>
+            </td>
+
+            <td>
+                <span style="font-size: 10px;">Select the 'CPV Delhi' option to apply for Diplomatic/Official passport at Consular, Passport and Visa (CPV) division, Delhi.</span>
+            </td>
+        </tr>
+        <tr>
+        <td>
+            Passport Office<sup>*</sup> 
+        </td>
+
+        <td>
+            <select style="width: 172px; height: 25px;">
+                <option value="----Select----">----Select----</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bengaluru">Bengaluru</option>
+              </select>
+        </td>
+        <td>
+            <span style="font-size: 10px;">
+                Tibetan Refugees applying for Identity Certificate must register with 'Delhi' Passport Office.
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Given Name (Max 45 Characters) <sup>*</sup>
+        </td>
+        <td>
+            <input type="text" style="width: 165px; height: 22px;">
+        </td>
+        <td>
+            <span style="font-size: 10px;">
+               <strong> First Name + Middle Name</strong> <br>
+                Initials and honorifics (e.g. Dr.,Col.,etc.) are not allowed.</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Surname Name (Max 45 Characters) <sup>*</sup>
+        </td>
+        <td>
+            <input type="text"  style="width: 165px; height: 22px;">
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Date of Birth (DD/MM/YYYY) <sup>*</sup>
+        </td>
+        <td>
+            <input type="date" data-="DD/MM" style="width: 167px; height: 25px;">
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            E-mail Id (Max 35 Characters)<sup>*</sup>
+        </td>
+        <td>
+            <input type="email"  style="width: 165px; height: 22px;">
+        </td>
+    </tr>
+    
+    <tr>
+        <td>Do you want your Login Id
+            to be same as E-mail Id?</td>
+        
+            <td>
+                <input type="radio" name="Psemail" id="yesEmail" checked="checked">
+                <label for="yesEmail">Yes</label>
+
+                <input type="radio" name="Psemail" id="noEmail" >
+                <label for="noEmail">No</label>
+            </td>
+    </tr>
+
+    <tr>
+        <td>
+            Login Id<sup>*</sup>
+        </td>
+        <td>
+            <input type="text"  style="width: 165px; height: 22px;">
+        </td>
+        <td>
+            <a href="">Check Availability</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Password<sup>*</sup>
+        </td>
+        <td>
+            <input type="password" style="width: 165px; height: 22px;">
+        </td>
+        <td>
+            <a href="https://portal2.passportindia.gov.in/AppOnlineProject/onlineHtml/passwordPolicy.html">Password Policy</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Confirm Password<sup>*</sup>
+        </td>
+        <td>
+            <input type="password"  style="width: 165px; height: 22px;">
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Hint Question<sup>*</sup>
+        </td>
+        <td>
+            <select  style="width: 172px; height: 27px;">
+                <option value="----Select----">----Select----</option>
+                <option value="Birth">Birth City</option>
+                <option value="colour">Fav Colour</option>
+                <option value="cricketer">Fav Cricketer</option>
+                <option value="food">Fav Food</option>
+                <option value="school">First School</option>
+                <option value="mothersName">Mother's Maiden Name</option>
+              </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Hint Answer<sup>*</sup>
+        </td>
+        <td>
+           <input type="text" style="width: 165px; height: 22px;" >
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Enter the Characters Displayed<sup>*</sup>
+        </td>
+        <td>
+           <img src="capcha.jpg" alt="Capcha Picture" style="height: 70px;" width="172px"> <br>
+           <input type="text" style="width: 165px; height: 22px;">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <button type="submit" id="registerButton" style="background-color:rgb(48, 48, 223); color: white; margin-left: 250px; margin-top: 20px;">Register</button>
+            <button type="reset" id="clearButton" style="background-color:rgb(48, 48, 223); color: white;">Clear</button>
+        </td>
+    </tr>
+
+    </table>
+</form>
+</div>
+</body>
+</html>

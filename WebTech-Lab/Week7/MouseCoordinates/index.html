@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mouse Coordinates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('/Week7/wallpaper.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #777;
+        }
+
+        canvas {
+            border: 2px solid #333;
+            background-color: #fff;
+            margin: 20px auto;
+            display: block;
+            cursor: crosshair;
+        }
+
+        #coordinates {
+            font-size: 20px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        #mouseX, #mouseY {
+            color: #E91E63;
+            font-weight: bold;
+        }
+
+        #canvas-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container">
+        <h1>Mouse Coordinates</h1>
+        <p>Move your mouse over the canvas to see the coordinates:</p>
+        <canvas id="canvas" width="400" height="400"></canvas>
+        <div id="coordinates">
+            <p>Mouse X: <span id="mouseX">0</span></p>
+            <p>Mouse Y: <span id="mouseY">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        
+        const canvas = document.getElementById("canvas");
+        const context = canvas.getContext("2d");
+        const mouseXElement = document.getElementById("mouseX");
+        const mouseYElement = document.getElementById("mouseY");
+
+        canvas.addEventListener("mousemove", function (event) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+            mouseXElement.textContent = mouseX;
+            mouseYElement.textContent = mouseY;
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.beginPath();
+            context.arc(mouseX, mouseY, 5, 0, 2 * Math.PI);
+            context.fillStyle = "#E91E63";
+            context.fill();
+        });
+    </script>
+</body>
+</html>

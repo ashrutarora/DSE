@@ -1,0 +1,85 @@
+.f {
+    /* border: 1px solid red ; */
+    font-size: 300px;
+    font-family: 'Tangerine', cursive;
+    display: inline-block;
+    padding-left: 5%;
+    padding-right: 10%;
+    margin-top: 20%;
+    margin-left: 40%;
+    animation: bgcolorshift 2s linear infinite;
+    transform-origin: center center;
+
+}
+
+.wild {
+    position: absolute;
+    font-size: 60px;
+    margin-top: 3%;
+    margin-left: 60px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: blue;
+    animation: colorshift 1s linear infinite reverse;
+
+}
+
+.lower {
+    position: absolute;
+    font-size: 60px;
+    margin-top: 10%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellowgreen;
+    animation: colorshift 1s linear infinite;
+}
+
+@keyframes bgcolorshift {
+    0% {
+        background-color: rgb(226, 120, 38);
+    }
+
+    20% {
+        background-color: rgb(118, 221, 58);
+    }
+
+    40% {
+        background-color: rgb(27, 165, 211);
+    }
+
+    60% {
+        background-color: rgb(226, 226, 4);
+    }
+
+    80% {
+        background-color: rgb(237, 55, 86);
+    }
+
+    100% {
+        background-color: rgb(167, 21, 140);
+    }
+}
+
+@keyframes colorshift {
+    0% {
+        color: rgb(226, 120, 38);
+    }
+
+    20% {
+        color: rgb(118, 221, 58);
+    }
+
+    40% {
+        color: rgb(27, 165, 211);
+    }
+
+    60% {
+        color: rgb(226, 226, 4);
+    }
+
+    80% {
+        color: rgb(237, 55, 86);
+    }
+
+    100% {
+        color: rgb(167, 21, 140);
+    }
+}

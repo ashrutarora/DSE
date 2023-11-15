@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Authentication with Cookies</title>
+  <script>
+    // Function to set a cookie with a specific name, value, and expiration date
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      var expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    // Function to get the value of a specific cookie by name
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    // Function to ask for the user's name and set the cookie
+    function askForName() {
+      var userName = prompt("Please enter your name:");
+      if (userName != "" && userName != null) {
+        setCookie("username", userName, 30); // Setting the username cookie for 30 days
+        alert("Hi, " + userName + "! You've signed up successfully.");
+      }
+    }
+
+    // Function called when the page is loaded
+    window.onload = function() {
+      askForName(); // Ask for the user's name on every page load
+      var username = getCookie("username");
+      if (username != "") {
+        alert("Welcome back, " + username + "!");
+        // User is returning, show sign in message or perform actions for returning users
+        // You can modify this part according to your needs
+      }
+    };
+  </script>
+</head>
+<body>
+  <!-- Content of your web page -->
+  <h1>Welcome to the Site</h1>
+  <p>This is an example of a web page that asks for your name on every visit.</p>
+</body>
+</html>

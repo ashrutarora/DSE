@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            background-image: url('wallpaper.jpg');
+            /* Set the background image */
+            background-size: cover;
+            /* Cover the entire viewport */
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px -20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Guess the Number Game (1-10)</h1>
+        <p>Guess a number between 1 and 10:</p>
+
+        <input type="number" id="guess" min="1" max="10" required onkeydown="if(event.keyCode==13) checkGuess()">
+        <button onclick="checkGuess()">Submit Guess</button>
+        <p>You have <span id="attempts">5</span> attempts remaining.</p>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Generate a random number between 1 and 10
+        const targetNumber = Math.floor(Math.random() * 10) + 1;
+        let attempts = 5;
+
+        function checkGuess() {
+            const guess = parseInt(document.getElementById("guess").value);
+
+            if (isNaN(guess) || guess < 1 || guess > 10) {
+                alert("Please enter a valid number between 1 and 10.");
+                return;
+            }
+
+            attempts--;
+
+            if (guess === targetNumber) {
+                document.getElementById("result").innerHTML = `Congratulations! You guessed the number ${targetNumber} correctly!`;
+                document.getElementById("result").style.color = "green";
+                document.getElementById("attempts").innerHTML = "0";
+                document.getElementById("guess").disabled = true;
+                alert("YOU WONNNNN");
+            } else if (attempts === 0) {
+                document.getElementById("result").innerHTML = `Sorry, you're out of attempts. The correct number was ${targetNumber}.`;
+                document.getElementById("result").style.color = "red";
+                document.getElementById("attempts").innerHTML = "0";
+                document.getElementById("guess").disabled = true;
+                
+                setTimeout(function () {
+                    alert("YOU LOST :(");
+                    location.reload();
+                }, 2000);
+
+            } else {
+                document.getElementById("result").innerHTML = `Wrong guess. Try again. ${attempts} attempts remaining.`;
+                document.getElementById("result").style.color = "red";
+                document.getElementById("attempts").innerHTML = attempts;
+            }
+        }
+    </script>
+</body>
+
+</html>

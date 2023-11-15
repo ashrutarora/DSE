@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Boxes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('wallpaper.jpg'); /* Set the background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .boxes {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: left;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+        p{
+            font-size: 20px;
+            color: white;
+        }
+        b{
+            color: violet;
+        }
+        h1{
+            color: rgb(39, 21, 3);
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Boxes</h1>
+    <div class="container">
+        <div class="boxes">
+            <p><b>Alert Box - </b>The <code>alert()</code> function displays a pop-up dialog box with a specified message and an "OK" button. <br> <br> It's often used to show informational messages to the user.</p>
+            <button onclick="showAlert()">Show Alert</button>
+            
+            <p><b>Prompt Box - </b>The <code>prompt()</code> function displays a dialog box that prompts the user for input. <br> <br> It can be used to collect data from the user.</p>
+            <button onclick="showPrompt()" class="styled-button">Show Prompt</button>
+            
+            <p><b>Confirm Box - </b>The <code>confirm()</code> function displays a dialog box with a message and "OK" and "Cancel" buttons. <br> <br> It's often used to get a yes/no response from the user.</p>
+            <button onclick="showConfirm()" class="styled-button">Show Confirm</button>
+            
+            <p><b>Line Break - </b>The <code>document.write()</code> method can be used to write content to the document. <br> <br> In this example, it adds a line break after some text.</p>
+            <button onclick="showLineBreak()" class="styled-button">Show Line Break</button>
+        </div>
+    </div>
+
+    <script>
+        function showAlert() {
+            alert("This is an alert box!");
+        }
+
+        function showPrompt() {
+            var result = prompt("Enter something:", "");
+            if (result !== null) {
+                alert("You entered: " + result);
+            }
+        }
+
+        function showConfirm() {
+            var confirmed = confirm("Are you sure you want to continue?");
+            if (confirmed) {
+                alert("You clicked OK!");
+            } else {
+                alert("You clicked Cancel!");
+            }
+        }
+
+        function showLineBreak() {
+            document.write("This is some text.<br>This is a line break.");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "position": "Manager",
+        "department": "Sales"
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "position": "Developer",
+        "department": "IT"
+    },
+    {
+        "id": 3,
+        "name": "Alice Johnson",
+        "position": "Designer",
+        "department": "Marketing"
+    },
+    {
+        "id": "1",
+        "name": "Ashrut",
+        "position": "HOD",
+        "department": "Dse"
+    },
+    {
+        "id": "2",
+        "name": "Alok",
+        "position": "HOD",
+        "department": "Cse"
+    }
+]

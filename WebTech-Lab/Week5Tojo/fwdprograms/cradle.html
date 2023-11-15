@@ -1,0 +1,101 @@
+<!-- Write a HTML document to display a newton’s cradle using CSS animation. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title>Cradle</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        } 
+        .container  {
+            height: 100vh;
+            width: 100vw; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            position: relative; 
+        }
+        .line {
+            width: 500px;
+            height: 400px;
+            border-top: 20px solid #253031;
+            display: flex;
+        }
+        .box {
+            display: flex;
+            width: 20%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .box:nth-child(1) {
+            animation: cradleLeft 4s 0s infinite;
+            transform-origin: top;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .box:nth-child(5) {
+            animation: cradleRight 4s 0s infinite;
+            transform-origin: top;
+            animation-delay: 2s;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .box::before {
+            content: "";
+            height: 100%;
+            width: 4px;
+            background-color: #315659;
+        }
+        .box::after {
+            content: "";
+            height: 140px;
+            width: 100px;
+            border-radius: 100%;
+            background-color: #2978a0;
+        }
+        @keyframes cradleLeft {
+            0% {
+                transform: rotateZ(00deg);
+            }
+            25% {
+                transform: rotateZ(20deg);
+            } 
+            50% {
+                transform: rotateZ(00deg);
+            }
+            100% {
+                transform: rotateZ(0deg);
+            }
+        }
+        @keyframes cradleRight {
+            0% {
+                transform: rotateZ(00deg);
+            }
+            25% {
+                transform: rotateZ(-20deg);
+            } 
+            50% {
+                transform: rotateZ(00deg);
+            }
+            100% {
+                transform: rotateZ(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="line">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+</body>
+</html>

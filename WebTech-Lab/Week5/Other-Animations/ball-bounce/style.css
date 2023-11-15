@@ -1,0 +1,68 @@
+* {
+    background-color: grey;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+}
+
+.table {
+    width: 800px;
+    height: 30px;
+    background-color: black;
+    position: relative;
+    border-radius: 20px;
+}
+
+.ball {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: black;
+    top: -160px;
+    position: absolute;
+    box-shadow: 0 0 50px white;
+    animation: roll 3s linear infinite;
+}
+
+@keyframes roll {
+
+    0% {
+        transform: translateX(0px) translateY(0px);
+        height: 150px;
+    }
+
+    20% {
+        transform: translateX(790px);
+    }
+
+    40% {
+        transform: translateX(790px) translateY(600px);
+        width: 150px;
+    }
+
+    50%{
+        transform: translateX(790px) translateY(250px);
+    }
+
+    60% {
+        transform: translateX(790px) translateY(600px);
+        width: 150px;
+
+    }
+
+    80% {
+        transform: translateX(790px) translateY(350px);
+        width: 150px;
+
+    }
+
+    100% {
+        transform: translateX(790px) translateY(600px);
+        width: 150px;
+
+    }
+
+}

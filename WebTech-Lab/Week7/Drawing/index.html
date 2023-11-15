@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freehand Drawing using Canvas</title>
+    <style>
+        #drawingCanvas {
+            border: 2px solid #3498db;
+            background-color: #f1f1f1;
+            cursor: crosshair;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #ecf0f3;
+            background-image: url('/Week7/wallpaper.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        button{
+            margin-top: 20px;
+            width: auto;
+            height: 30px;
+            font-size: 20px;
+            background-color: yellow;
+        }
+        button:hover{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="color: white;">Draw here</h1>
+    <canvas id="drawingCanvas" width="800" height="400"></canvas>
+    <button id="clearButton">Clear Canvas</button>
+
+    <script>
+        const canvas = document.getElementById('drawingCanvas');
+        const context = canvas.getContext('2d');
+        const clearButton = document.getElementById('clearButton');
+
+        let isDrawing = false;
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            context.beginPath();
+            context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDrawing) {
+                context.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+                context.stroke();
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+        });
+
+        canvas.addEventListener('mouseout', () => {
+            isDrawing = false;
+        });
+
+        clearButton.addEventListener('click', () => {
+            const confirmClear = window.confirm("Are you sure you want to clear the canvas?");
+            if (confirmClear) {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        });
+    </script>
+</body>
+</html>

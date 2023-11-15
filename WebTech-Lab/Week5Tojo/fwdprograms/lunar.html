@@ -1,0 +1,67 @@
+<!-- Write a HTML document to depict a lunar eclipse using CSS animation -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title>Lunar Eclipse</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .container  {
+            height: 100vh;
+            width: 100vw;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } 
+        .sun {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border-radius: 100%;
+            animation: eclipseShadow 5s ease-in infinite forwards;
+        } 
+        .moon {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            position: absolute;
+            border-radius: 100%; 
+            animation: eclipse 5s ease-in infinite forwards;
+        }
+        @keyframes eclipse {
+            0% {
+                left: 30%; 
+            } 
+            100% {
+                left: 60%; 
+            }
+        }
+
+        @keyframes eclipseShadow {
+            0% { 
+                box-shadow: 0px 0px 30px black;
+            } 
+            60% {
+                box-shadow: 0px 0px 100px white;
+            }
+            75% {
+                box-shadow: 0px 0px 100px white;
+            }
+            100% { 
+                box-shadow: 0px 0px 30px black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sun">&nbsp;</div>
+        <div class="moon">&nbsp;</div>
+    </div>
+</body>
+</html>

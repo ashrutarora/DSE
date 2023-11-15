@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Browser Window</title>
+    <style>
+        body{
+            background-image: url('/wallpaper.jpg'); /* Set the background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 250px;
+            color: white;
+            flex-direction: column;
+        }
+        button{
+            height: 50px;
+            width: 150px;
+            border-radius: 20px;
+        }
+        button:hover {
+            background-color: yellow;
+        }
+        p{
+            font-size: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <p>Click on the button Below to open a new window</p>
+    <button id="openWindowBtn">Open New Window</button>
+
+    <script>
+        // Function to open a new browser window and display text
+        function openNewWindow() {
+            const textToDisplay = "Hello, this is your new window!";
+            
+            // Open a new browser window
+            const newWindow = window.open('', '', 'width=600,height=900');
+            
+            // Check if the new window was successfully opened
+            if (newWindow) {
+                // Write the text to the new window
+                newWindow.document.write(`<h1>${textToDisplay}</h1>`);
+            } else {
+                alert('Pop-up blocked! Please enable pop-ups for this site.');
+            }
+        }
+
+        // Event listener for the button click
+        document.getElementById('openWindowBtn').addEventListener('click', openNewWindow);
+    </script>
+</body>
+</html>

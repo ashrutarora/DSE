@@ -1,0 +1,211 @@
+<!-- Write a HTML document to display an animated solar system using CSS. -->
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title>Solar System</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: linear-gradient(rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.5)), url('img/space.jpg');
+            background-size: cover;  
+        }
+        .container  {
+            height: 100vh;
+            width: 100vw; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            position: relative; 
+        }
+        .sun {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+        }
+        .sun img {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+        }
+        .earth {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            width: 340px;
+            height: 340px;
+            border-radius: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate infinite 16s;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .earth img {
+            width: 45px;
+            height: 45px; 
+            margin-top: 7%;
+            margin-left: 7%;
+        }
+        .mercury {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate infinite 6s;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .mercury img {
+            width: 20px;
+            height: 20px; 
+            margin-top: 9%;
+            margin-left: 9%;
+        }
+        .venus {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            width: 280px;
+            height: 280px;
+            border-radius: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate infinite 10s;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .venus img {
+            width: 20px;
+            height: 20px; 
+            margin-top: 12%;
+            margin-left: 12%;
+        }
+        .mars {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            width: 420px;
+            height: 420px;
+            border-radius: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate infinite 20s;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .mars img {
+            width: 30px;
+            height: 30px; 
+            border-radius: 100%;
+            margin-top: 11%;
+            margin-left: 11%;
+        }
+        .jupiter {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            width: 510px;
+            height: 510px;
+            border-radius: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate infinite 25s;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .jupiter img {
+            width: 45px;
+            height: 45px; 
+            border-radius: 100%;
+            margin-top: 10%;
+            margin-left: 10%;
+        }
+
+        .saturn {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate infinite 30s;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .saturn img {
+            width: auto;
+            height: 45px;  
+            margin-top: 10%;
+            margin-left: 10%;
+        }
+        .uranus {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            width: 680px;
+            height: 680px;
+            border-radius: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate infinite 40s;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .uranus img {
+            width: auto;
+            height: 45px;  
+            margin-top: 11%;
+            border-radius: 100%;
+            margin-left: 11%;
+        }
+        .neptune {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            width: 760px;
+            height: 760px;
+            border-radius: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate infinite 50s;
+            animation-timing-function: cubic-bezier(0,0,0,0);
+        }
+        .neptune img {
+            width: auto;
+            height: 45px;  
+            margin-top: 11%;
+            border-radius: 100%;
+            margin-left: 11%;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotateZ(0deg);
+            } 100% {
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <div class="sun">
+            <img src="img/sun.jpg" alt="">
+        </div>
+        <div class="mercury">
+            <img src="img/mercury.webp" alt="">
+        </div>
+        <div class="venus">
+            <img src="img/venus.jpg" alt="">
+        </div>
+        <div class="earth">
+            <img src="img/earth.png" alt="">
+        </div>
+        <div class="mars">
+            <img src="img/mars.jpg" alt="">
+        </div>
+        <div class="jupiter">
+            <img src="img/jupiter.jpg" alt="">
+        </div>
+        <div class="saturn">
+            <img src="img/saturn.png" alt="">
+        </div>
+        <div class="uranus">
+            <img src="img/uranus.png" alt="">
+        </div>
+        <div class="neptune">
+            <img src="img/neptune.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

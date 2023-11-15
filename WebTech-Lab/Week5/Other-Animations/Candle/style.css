@@ -1,0 +1,85 @@
+* {
+    background-color: rgb(0, 0, 0);
+}
+
+.candle {
+    height: 800px;
+    width: 100px;
+    margin-left: 50%;
+    margin-top: 20%;
+    border-radius: 20px;
+    position: relative;
+    background: rgb(255, 244, 161);
+    background: linear-gradient(to bottom, rgba(255, 244, 161, 1) 0%, rgba(255, 244, 161, 1) 20%, rgba(0, 0, 0, 1) 100%);
+}
+
+.flame {
+    height: 200px;
+    width: 50px;
+    border-radius: 50%;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    z-index: -2;
+    box-shadow: 0 0 2000px yellow, 0 0 1920px orange, 0 0 500px white;
+    background: rgb(255, 141, 0);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 202, 99, 1) 28%, rgba(255, 141, 0, 1) 100%);
+    animation: burning 2s linear infinite;
+}
+
+.thread {
+    height: 25px;
+    width: 10px;
+    top: -15px;
+    left: 45%;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+    position: absolute;
+    background-color: rgb(39, 35, 35);
+    z-index: -2;
+}
+
+.light {
+    height: 500px;
+    width: 400px;
+    background-color: rgba(177, 114, 52, 0.041);
+    position: absolute;
+    border-radius: 50%;
+    top: -63%;
+    left: -155px;
+    z-index: 1;
+}
+
+@keyframes burning {
+
+    0%,
+    100% {
+        transform: translateX(-50%) rotate(-2deg);
+        height: 180px;
+        width: 20px;
+    }
+
+    50% {
+        transform: translateX(-50%) rotate(2deg);
+        height: 180px;
+        width: 25px;
+    }
+
+}
+
+/* .blue-flame {
+    height: 70px;
+    width: 50px;
+    border-radius: 50%;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+    position: absolute;
+    top: -80px;
+    left: 20%;
+    z-index: -2;
+    box-shadow: 0 0 2000px yellow, 0 0 1920px orange, 0 0 500px white;
+    background: rgb(222,243,246, 0.5);
+    background: radial-gradient(circle, rgba(222,243,246,1) 0%, rgb(0, 127, 181) 28%, rgba(222,243,246,1) 100%);
+} */

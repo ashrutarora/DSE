@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Time Table</title>
+</head>
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    text-align: center;
+
+  }
+
+  table {
+    background: red;
+    height: 700px;
+    width: 80%;
+    margin-left: 150px;
+    font-size: 30px;
+
+  }
+
+  td {
+    background-color: mediumaquamarine
+  }
+
+  th {
+    background-color: yellow;
+  }
+
+  td {
+    transition: transform .15s;
+    /* Animation */
+    margin-top: 50px;
+    margin-left: 300px;
+  }
+
+  td:hover {
+    transform: scale(1.5);
+    background-color: aquamarine;
+  }
+
+  .submit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <table>
+
+    <caption style="font-size: larger;">DSE - A Timetable</caption>
+
+    <tr>
+      <th>Mirror</th>
+      <th>08:00-09:00</th>
+      <th>09:00-10:00</th>
+      <th>10:00-10:30</th>
+      <th>10:30-11:30</th>
+      <th>11:30-12:30</th>
+      <th>12:30-01:00</th>
+      <th>01:00-02:00</th>
+      <th>02:00-03:00</th>
+      <th>03:00-03:30</th>
+      <th>03:30-04:30</th>
+    </tr>
+    <tr>
+      <th>Monday</th>
+      <td style="background-color: lightgrey;"></td>
+      <td colspan="3" style="background-color: lightblue;">DL Lab - A2</td>
+      <td colspan="2" style="background-color: rgba(214, 208, 208, 0.987);">Lunch Break</td>
+      <td>CC</td>
+      <td>OS</td>
+      <td style="background-color: rgba(214, 208, 208, 0.987);">Break</td>
+      <td style="background-color: rgba(133, 95, 199, 0.987); color: white;">NLP*</td>
+
+    </tr>
+    <tr>
+      <th>Tuesday</th>
+      <td>Maths</td>
+      <td>NLP</td>
+      <td style="background-color: rgba(214, 208, 208, 0.987);">Break</td>
+      <td>CC</td>
+      <td>DL</td>
+      <td colspan="2" style="background-color: rgba(214, 208, 208, 0.987);">Lunch Break</td>
+      <td colspan="3" style="background-color: lightblue;">WT Lab - A1</td>
+    </tr>
+    <tr>
+      <th>Wednesday</th>
+      <td style="background-color: lightgrey;"></td>
+      <td colspan="3" style="background-color: lightblue;">WT Lab - A2</td>
+      <td colspan="2" style="background-color: rgba(214, 208, 208, 0.987);">Lunch Break</td>
+      <td>DL</td>
+      <td>Maths</td>
+      <td style="background-color: rgba(214, 208, 208, 0.987);">Break</td>
+      <td>NLP</td>
+
+    </tr>
+    <tr>
+      <th>Thursday</th>
+      <td style="background-color: rgba(133, 95, 199, 0.987); color: white;">CC*</td>
+      <td>DL</td>
+      <td style="background-color: rgba(214, 208, 208, 0.987);">Break</td>
+      <td>OS</td>
+      <td style="background-color: lightgrey;"></td>
+      <td colspan="2" style="background-color: rgba(214, 208, 208, 0.987);">Lunch Break</td>
+      <td colspan="3" style="background-color: lightblue;">OS Lab - A2</td>
+    </tr>
+    <tr>
+      <th>Friday</th>
+      <td style="background-color: lightgrey;"></td>
+      <td colspan="3" style="background-color: lightblue;">OS Lab - A1</td>
+      <td colspan="2" style="background-color: rgba(214, 208, 208, 0.987);">Lunch Break</td>
+      <td>NLP</td>
+      <td>CC</td>
+      <td style="background-color: rgba(214, 208, 208, 0.987);">Break</td>
+      <td>DL</td>
+
+    </tr>
+    <tr>
+      <th>Saturday</th>
+      <td style="background-color: rgba(133, 95, 199, 0.987); color: white;">OS*</td>
+      <td>OS</td>
+      <td style="background-color: rgba(214, 208, 208, 0.987);">Break</td>
+      <td>Maths</td>
+      <td style="background-color: rgba(133, 95, 199, 0.987); color: white;">DL*</td>
+      <td colspan="2" style="background-color: rgba(214, 208, 208, 0.987);">Lunch Break</td>
+      <td colspan="3" style="background-color: lightblue;">DL Lab - A1</td>
+    </tr>
+    <tr>
+      <td colspan="11">
+        <a href="index2.html" class="submit-button">Submit</a>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
