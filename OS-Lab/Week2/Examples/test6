@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Enter height of rectangle: "
+read height
+echo "Enter width of rectangle: "
+read width
+area=`expr $height \* $width`
+echo "The area of the rectangle is $area"

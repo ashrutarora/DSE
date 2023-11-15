@@ -1,0 +1,11 @@
+Henry     Fort-Worth     Texas       35   61
+James     Miami          Florida     26   111
+Jason     Oakland        California  40   90
+John      Los-Angeles    California  29   96
+Max       Chicago        Illinois    45   87
+Megan     Cincinnati     Ohio        24   103
+Name      Location       State       Age  Weight
+Penelope  Phoenix        Arizona     48   104
+Samantha  Houston        Texas       25   110
+Scott     Las-Vegas      Nevada      39   92
+William   San-Francisco  California  37   104

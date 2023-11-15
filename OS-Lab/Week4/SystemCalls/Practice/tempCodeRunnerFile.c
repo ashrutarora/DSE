@@ -1,0 +1,2 @@
+int status;
+        wait(&status);

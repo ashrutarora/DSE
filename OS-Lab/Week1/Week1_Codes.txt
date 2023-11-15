@@ -1,0 +1,75 @@
+Q2
+
+1)
+mkdir Week1 Week2 Week3 Week4 Week5 Week6 Week7 Week8 Week9 Week10 Week11
+
+2)
+cd Week1
+mkdir TestFolder
+
+3)
+cd TestFolder
+touch f1 f2 f3
+
+4)
+vi f1
+I
+Hello this is file f1
+Esc :wq
+
+5)
+cd ../
+cp Week1/TestFolder/f1 Week1/
+
+6)
+who | wc -l >> q6
+ls -1 | wc -l >> q6
+
+7)
+ls /Week1/[aA]*
+
+8)
+vi month_names
+sort month_names
+
+9)
+head -5 month_names
+tail -5 month_names
+
+10)
+pwd > q10
+date >> q10 
+ls >> q10
+
+11)
+a)
+:%s/\n\*\*\*\n/\*\*\*/g
+
+:%s/: This tells vi to perform a search and replace operation on all lines.
+\n: This represents a newline character.
+\*\*\*\n: This is the pattern to match: a line containing only ***.
+/: This separates the pattern to match from the replacement.
+\*\*\*: This is the replacement text: ***.
+/g: This flag makes the replacement global on each line.
+
+b)
+:%s/Linux/Ubuntu/g
+
+:%s/: This tells vi to perform a search and replace operation on all lines.
+Linux: This is the search pattern to find occurrences of the word "Linux".
+/: This separates the search pattern from the replacement.
+Ubuntu: This is the replacement text to replace "Linux" with "Ubuntu".
+/g: This flag makes the replacement global on each line, replacing all occurrences.
+
+c)
+Esc
+:wq
+
+d)
+cat Linux.txt
+
+e)
+mv Linux.txt Ubuntu.txt
+
+f)
+cp Ubuntu.txt Linux1.txt

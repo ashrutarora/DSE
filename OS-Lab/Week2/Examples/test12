@@ -1,0 +1,6 @@
+#!/bin/bash
+a=6 b=6
+if [ $a -eq $b ]
+then
+	echo "EQUAL!"
+fi

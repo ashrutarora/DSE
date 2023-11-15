@@ -1,0 +1,18 @@
+#!/bin/bash
+read -p "Enter CGPA: " cgpa
+
+if [ $cgpa -eq 7 ]
+then
+	echo "Grade C"
+elif [ $cgpa -eq 8 ]
+then
+	echo "Grade B"
+elif [ $cgpa -eq 9 ]
+then
+	echo "Grade A"
+elif [ $cgpa -eq 10 ]
+then
+	echo "Grade A+"
+else
+	echo "Grade D"
+fi

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+read -p "Enter the filename: " filename
+read -p "Enter the start line number: " start_line
+read -p "Enter the number of lines to print: " num_lines
+
+count=1
+
+while read -r line
+do
+    if [ $count -ge $start_line ] && [ $count -le $((start_line + num_lines - 1)) ]
+	then
+        	echo "$line"
+    fi
+
+    ((count++))
+done < "$filename"

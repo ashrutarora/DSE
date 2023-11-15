@@ -1,0 +1,13 @@
+#!/bin/bash
+
+read -p "Enter number : " num
+
+while [ 1 ]
+do
+        echo $num
+        if [ $num -eq 0 ]
+        then
+                break
+        fi
+        num=$[$num-1]
+done

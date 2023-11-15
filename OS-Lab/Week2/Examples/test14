@@ -1,0 +1,8 @@
+#!/bin/bash
+user=`whoami`
+	if [ $user = “ashrutarora” ]
+	then
+		echo "Hi Hillary!
+	else
+		echo "Hi $user!”
+fi

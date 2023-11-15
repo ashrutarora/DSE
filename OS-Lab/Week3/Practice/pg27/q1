@@ -1,0 +1,20 @@
+#!/bin/bash
+
+read -p "Enter the first string: " str1
+read -p "Enter the second string: " str2
+
+# Check if the strings are empty
+if [ -z $str1 ] && [ -z $str2 ]; then
+    echo "Both strings are empty."
+elif [ -z $str1 ]; then
+    echo "The first string is empty."
+elif [ -z $str2 ]; then
+    echo "The second string is empty."
+else
+    if [ $str1 = $str2 ]; then
+        echo "The strings are equal."
+    else
+        echo "The strings are not equal."
+    fi
+fi
+

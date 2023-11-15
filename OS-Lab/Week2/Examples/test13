@@ -1,0 +1,6 @@
+#!/bin/bash
+user = `whoami`
+if [ $user = "ashrutarora" ]
+then
+	echo "Hi Ashrut"
+fi

@@ -1,0 +1,9 @@
+!/bin/bash 
+# my first script 
+d=`date`
+echo “Today’s date is : $d”
+echo “ these are the active users” # who
+who
+clear
+ls 
+pwd

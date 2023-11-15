@@ -1,0 +1,10 @@
+#!/bin/bash
+read -p " Enter a name " name
+
+if [ $name = "Alice" ]
+then
+        echo "Good Morning Alice"
+elif [ $name = "Peter" ]
+then 
+        echo "Good Night Peter"
+fi

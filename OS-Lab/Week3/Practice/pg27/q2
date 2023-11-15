@@ -1,0 +1,28 @@
+#!/bin/bash
+
+read -p "Please enter file or directory names separated by space: " fd_names
+
+for fd in $fd_names
+do
+    # a) Displaying content and checking for Execute permission
+    if [ -f $fd ]; then
+        echo "File: $fd"
+        echo "Contents:"
+        cat $fd
+
+        if [ -x $fd ]; then
+            echo "The file has execute permission."
+        else
+            echo "The file does not have execute permission."
+        fi
+
+    # b) Displaying the number of files in a directory
+    elif [ -d $fd ]; then
+        echo "Directory: $fd"
+
+        num_files=$(find $fd -type f | wc -l)
+        echo "Number of files in $fd: $num_files"
+    else
+        echo "File or directory $fd does not exist."
+    fi
+done

@@ -1,0 +1,41 @@
+RowNo Name Location State Age Month-of-Entry Gender Height Weight Index
+1 John Los-Angeles California 29 Aug Male 174 96 4
+2 Max Chicago Illinois 45 Jan Male 189 87 2
+3 Samantha Houston Texas 25 Jul Female 185 110 4
+4 Penelope Phoenix Arizona 48 Sep Female 195 104 3
+5 Henry Fort-Worth Texas 35 Apr Male 149 61 3
+6 William San-Francisco California 37 Apr Male 189 104 3
+7 Scott Las-Vegas Nevada 39 May Male 147 92 5
+8 James Miami Florida 26 Oct Male 154 111 5
+9 Jason Oakland California 40 Fev Male 174 90 3
+10 Megan Cincinnati Ohio 24 Nov Female 169 103 4
+
+Q1)
+sort -k3 data
+
+Q2)
+sort -k4 data
+
+Q3)
+sort -k10 data
+
+Q4)
+sort -k4,3 data 
+
+Q5)
+cut -d' ' -f1,2,5,7,10 data | column -t
+
+Q6)
+cut -d ' ' -f2 data | tr '[:lower:]' '[:upper:]'
+
+Q7)
+sort -k 5n data | column -t
+
+Q8)
+sort -k 6M data | column -t > Personnel_data_month2022.dat
+
+Q9)
+cut -f2 -d' ' data | grep "^[SJ]" > SJ_Names.dat
+
+Q10)
+cut -f2,3,4,5,9 -d' ' data | sort -k1 | column -t > sorted_data.txt

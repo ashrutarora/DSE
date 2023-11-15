@@ -1,0 +1,4 @@
+#!/bin/bash
+number=25
+name="Jeff Bezos"
+echo "$number $name"

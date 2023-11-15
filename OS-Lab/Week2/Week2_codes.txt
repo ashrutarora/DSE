@@ -1,0 +1,196 @@
+1)
+cd Week2
+mkdir Examples Practice
+cd Examples
+
+vi 1.sh
+
+# Gives permission to file
+chmod u+rx 1.sh
+
+# Runs the file
+./1.sh
+
+2) Shell Variables
+vi test1
+
+#!/bin/bash
+number=25
+name=“Jeff Bezos"
+echo "$number $name"
+
+chmod u+rx test1
+./test1.sh
+
+3) User Input
+
+#!/bin/bash
+
+echo "Enter Name: "
+read name
+echo "How many friends do you have? "
+read number
+echo "$name has $number friends!"
+
+4) How to print $
+
+#!/bin/bash
+echo "Enter amount: "
+read cost
+echo "The total is: \$$cost"
+
+5)
+
+#!/bin/bash
+echo "Enter amount: "
+read cost
+echo 'The total is: $' "$cost"
+
+6) expr (we have to use backslashes before * for multiplication and for round brackets
+For using a variable we precede it with $, example i = 1, expr $i + 1
+
+#!/bin/bash
+echo "Enter height of rectangle: "
+read height
+echo "Enter width of rectangle: "
+read width
+area=`expr $height \* $width`
+echo "The area of the rectangle is $area"
+
+7)
+
+#!/bin/bash
+user=`whoami`
+numusers=`who | wc -l`
+echo "Hi $user! There are $numusers users logged on."
+
+
+8) Read in same line
+
+#!/bin/bash
+read -p “ Enter your name ” name
+echo “HI $name!”
+
+9)
+
+var1=`echo “scale=4; 3.44/5” | bc`
+Echo "$var1"
+
+10)
+
+#!/bin/bash 
+# my first script 
+d=`date`
+echo “Today’s date is : $d”
+echo “ these are the active users” # who
+who
+clear
+ls 
+pwd 
+
+11) IF statement
+
+#!/bin/bash
+a=6 b=6
+if [ $a –eq $b ]
+then
+	echo “EQUAL!”
+fi
+
+12) If (2)
+
+!/bin/bash
+user = `whoami`
+if [ $user = "ashrutarora" ]
+then
+        echo "Hi Ashrut"
+fi
+
+13) IF then Else
+
+#!/bin/bash
+user=`whoami`
+if [ $user = “ashrutarora” ]
+then
+echo "Hi Hillary!
+else
+echo "Hi $user!”
+fi
+
+14) If elif else
+
+#!/bin/bash
+users=`who | wc -l`
+if [ $users -ge 4 ]
+then
+echo "Heavy load"
+elif [ $users -gt 1 ]
+then
+echo "Medium load"
+else
+echo "Just me!"
+fi
+
+
+Practice Questions
+
+• Write a shell script to find if a given number is even or odd
+
+#!/bin/bash
+read -p " Enter a number " number
+
+rem=`expr $number % 2`
+
+if [ $rem -eq 0 ]
+then
+        echo "Even Number"
+else
+        echo "Odd Number"
+fi
+
+• Write a shell script to accept a user name and display “Good
+morning” if username is Alice and “Good night” if the
+username is Peter
+
+#!/bin/bash
+read -p " Enter a name " name
+
+if [ $name = "Alice" ]
+then
+        echo "Good Morning Alice"
+elif [ $name = "Peter" ]
+then
+        echo "Good Night Peter"
+fi
+
+
+• Write a shell script to display grade of a user. If cgpa (user
+input) is:
+– 7.0, grade ‘C’
+– 8.0, grade ‘B’
+– 9.0 grade ‘A’
+– 10.0 grade ‘A+’, any other cgpa, grade is ‘D’
+
+#!/bin/bash
+read -p "Enter CGPA: " cgpa
+
+if [ $cgpa -eq 7 ]
+then
+	echo "Grade C"
+elif [ $cgpa -eq 8 ]
+then
+	echo "Grade B"
+elif [ $cgpa -eq 9 ]
+then
+	echo "Grade A"
+elif [ $cgpa -eq 10 ]
+then
+	echo "Grade A+"
+else
+	echo "Grade D"
+fi
+
+
+
+
+

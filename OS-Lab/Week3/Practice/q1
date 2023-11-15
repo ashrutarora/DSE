@@ -1,0 +1,39 @@
+#!/bin/bash
+
+while true; do
+    echo "Enter 'a' for displaying long listing of files"
+    echo "Enter 'b' for displaying (hidden) long listing of files"
+    echo "Enter 'c' for removing files"
+    echo "Enter 'y' for exiting"
+    read -p "Enter your choice: " choice
+    case $choice in
+        [Yy])
+            echo "Exiting..."
+            break
+            ;;
+        [Aa])
+	    clear
+            echo "Listing Files:"
+            ls -l
+            ;;
+        [Bb])
+	    clear
+            echo "Listing Files including Hidden files:"
+            ls -lar
+            ;;
+        [Cc])
+ 	    clear
+            read -p "Enter the directory path to delete files from: " directory
+            if [ -d "$directory" ]; then
+                echo "Deleting Files in $directory..."
+                rm -f "$directory"/*  # Delete all files in the directory
+                echo "Files deleted."
+            else
+                echo "Directory $directory does not exist."
+            fi
+            ;;
+        *)
+            echo "Invalid choice."
+            ;;
+    esac
+done

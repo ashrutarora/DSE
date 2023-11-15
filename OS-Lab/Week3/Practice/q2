@@ -1,0 +1,38 @@
+#!/bin/bash
+
+while true
+do
+	echo "Enter 'a' for reading a file."
+	echo "Enter 'b' for changing permissions of file to make it executable."
+	echo "Enter 'y' for exiting"
+
+    read -p "Enter your choice : " choice
+    case $choice in
+        [Yy])
+            echo "Exiting..."
+            break
+            ;;
+        [Aa])
+    		read -p "Enter file name : " f_name
+		if [ -f "$f_name" ]; then
+			echo "Reading contents of $f_name"
+			cat "$f_name"
+		else
+			echo "File $f_name does not exist"
+		fi
+            ;;
+	[Bb])
+		read -p "Enter file name : " f_name
+		if [ -f "$f_name" ]; then
+			echo "Changing permissions of $f_name"
+			chmod 766 $f_name
+		else
+			echo "File $f_name does not exist"
+            	fi
+            ;;
+        *)
+            echo "Invalid choice."
+            ;;
+    esac
+done
+

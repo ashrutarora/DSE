@@ -1,0 +1,11 @@
+#!/bin/bash
+read -p " Enter a number " number
+
+rem=`expr $number % 2`
+
+if [ $rem -eq 0 ]
+then
+	echo "Even Number"
+else
+	echo "Odd Number"
+fi
