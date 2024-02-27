@@ -4,3 +4,10 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
     -reducer "python3 reducer.py" \
     -input your_input_path/input.txt \
     -output your_output_path
+
+To view -  hdfs dfs -cat /bda1/oup1/part-* or hdfs dfs -cat /bda/output/part-00000
+or Get it to local system by - hdfs dfs -get /bda/output/part-00000 /home/hdoop, Cat part-0000
+
+
+
+Run locally - cat input.txt | python3 mapper.py | sort | python3 reducer.py
