@@ -1,0 +1,6 @@
+hadoop jar /home/hdoop/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
+-files /home/hdoop/Ashrut_BDA/Week3/Q1/mapper.py,/home/hdoop/Ashrut_BDA/Week3/Q1/reducer.py \
+-mapper /home/hdoop/Ashrut_BDA/Week3/Q1/mapper.py \
+-reducer /home/hdoop/Ashrut_BDA/Week3/Q1/reducer.py \
+-input /Ashrut-BDA/Week3/Q1/employee_data.txt \
+-output /Ashrut-BDA/Week3/Q1/output
