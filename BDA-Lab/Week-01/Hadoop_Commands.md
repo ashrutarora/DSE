@@ -1,5 +1,7 @@
 # Interacting with HDFS using Command Line Interface
 
+### Note - You can replace ```hadoop fs``` with ```hdfs dfs```
+
 ## Create a directory in HDFS
 ```bash
 hadoop fs -mkdir /path/to/directory
