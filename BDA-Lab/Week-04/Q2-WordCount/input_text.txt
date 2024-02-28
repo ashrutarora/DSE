@@ -1,0 +1,12 @@
+Hello world! This is a sample text file.
+We are testing the Pig script in local and MapReduce modes.
+Pig is a high-level platform for processing large datasets.
+It provides a simple scripting language called Pig Latin.
+
+In Pig Latin, you can express data transformations using a series of operations.
+These operations include loading data, transforming it, and storing the results.
+
+Pig is often used for ETL (Extract, Transform, Load) processes in big data analytics.
+It abstracts the complexity of MapReduce programming, making it easier to work with large-scale data.
+
+Happy coding with Pig!
