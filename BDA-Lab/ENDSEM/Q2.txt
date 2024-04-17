@@ -1,0 +1,11 @@
+Arhu|BE|8|BigData|9192938821|Ramesh|BTech|3|Java|9193218821|Preeti|ME|6|DotNet|9192938822|Hrithik|MCA|8|DBA|9112938821|Seema|MTech|3|BigData|9192938829
+
+Q1)
+Apply line break to every 5th occurence pipe delimiter using pyspark in python and display as appropriate table format using pyspark in python
+
+
+Q2)
+Display onlt the domain from the given input file
+
+Q3)
+Display the records whose domain are matching
