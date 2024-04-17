@@ -1,0 +1,248 @@
+# Big Data Analytics (BDA) Laboratory Setup Guide
+
+---
+
+This guide outlines the steps to set up a Big Data Analytics (BDA) laboratory environment using Docker, focusing on tools like Pig, MapReduce, Spark, HBase, and Hive.
+
+## Prerequisites
+
+- Docker installed on your system.
+- Basic understanding of Docker commands.
+- Basic knowledge of Big Data concepts.
+
+## Docker Installation
+
+1. **Add Docker's official GPG key:**
+   ```bash
+   sudo apt-get update
+   sudo apt-get install ca-certificates curl
+   sudo install -m 0755 -d /etc/apt/keyrings
+   sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+   sudo chmod a+r /etc/apt/keyrings/docker.asc
+   ```
+
+2. **Add the repository to Apt sources:**
+   ```bash
+   echo \
+     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   sudo apt-get update
+   ```
+
+3. **Install Docker and related packages:**
+   ```bash
+   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   ```
+
+4. **Verify Docker Installation:**
+   ```bash
+   sudo docker run hello-world
+   ```
+
+5. **Enable Docker Services:**
+   ```bash
+   sudo systemctl enable docker.service 
+   sudo systemctl enable containerd.service
+   ```
+
+## Starting Docker Environment
+
+1. **Navigate to Docker Directory:**
+   ```bash
+   cd hadoop-docker-compose/
+   ```
+   
+2. **Run Docker Compose:**
+   ```bash
+   sudo docker-compose up -d
+   ```
+   This command starts the Docker containers in detached mode.
+
+3. **Check Container Status:**
+   ```bash
+   sudo docker ps -a
+   ```
+   Copy the first ID beside hadoop-docker-compose-master. This is the container ID.
+
+4. **Access Container Bash:**
+   ```bash
+   docker exec -it <container_id> /bin/bash
+   ```
+   Run `init`. This step is only required the first time. Avoid running `init` again, as it formats HDFS.
+
+## Running Docker (Hadoop) After the First Time
+
+1. **Navigate to Cloned Directory:**
+   ```bash
+   cd hadoop-docker-compose/
+   ```
+
+2. **Check Container Status:**
+   ```bash
+   docker ps -a
+   ```
+   Copy the container ID.
+
+3. **Access Container Bash:**
+   ```bash
+   docker exec -it <container_id> /bin/bash
+   ```
+
+4. **Restart Docker:**
+   ```bash
+   restart
+   ```
+   Do not run `init`, as it formats HDFS.
+
+## Accessing Localhost and HDFS File View
+
+1. **Open Browser:**
+   Access localhost through the browser:
+   - [http://localhost:9870](http://localhost:9870)
+
+2. **View HDFS File System:**
+   Navigate to Utilities -> Browse file system.
+
+## File Creation
+
+1. **Create Text File:**
+   ```bash
+   vi demo.txt
+   ```
+
+2. **Create CSV File:**
+   ```bash
+   vi demo.csv
+   ```
+   Press `i` to start writing to the file. Use `esc`, `A`, and `D` to edit the file.
+
+## MapReduce
+
+Execute the MapReduce code:
+```bash
+cat input.txt | python3 mapper.py | sort | python3 reducer.py
+```
+
+## Pig Scripting
+
+1. **Create Pig Script:**
+   ```bash
+   vi file.pig
+   ```
+
+2. **Run Pig Locally:**
+   ```bash
+   pig -x local file.pig
+   ```
+
+3. **Run Pig with MapReduce:**
+   ```bash
+   pig -x mapreduce p1.pig
+   ```
+
+   **Pig Mapreduce:**
+   
+   To run Pig scripts in MapReduce mode, you'll need to first create a folder in HDFS and transfer the data file there. Then, you can execute the Pig script in MapReduce mode. Here are the steps:
+
+   - Create a folder in HDFS:
+     ```bash
+     hdfs dfs -mkdir /input
+     ```
+
+   - Transfer the data file to the HDFS folder:
+     ```bash
+     hdfs dfs -put local_data_file /input
+     ```
+
+   - Run Pig in MapReduce mode:
+     ```bash
+     pig -x mapreduce pig_script.pig
+     ```
+
+## Spark (PySpark)
+
+1. **Create Scala File:**
+   ```bash
+   vi f1.scala
+   ```
+
+2. **Start Spark Shell:**
+   - Without Initialization Script:
+     ```bash
+     spark-shell
+     ```
+   - With Initialization Script:
+     ```bash
+     spark-shell -i f1.scala
+     ```
+
+   **Spark in Python:**
+   In addition to the provided Scala method, here's another way to execute Spark code using PySpark with complete steps, including input and output files:
+
+   - Create a Python script (e.g., `spark_script.py`) with your PySpark code. For example:
+     ```python
+     from pyspark.sql import SparkSession
+     
+     spark = SparkSession.builder \
+         .appName("Example") \
+         .getOrCreate()
+     
+     # Read input file
+     df = spark.read.csv("input.csv", header=True)
+     
+     # Perform some transformations or analysis
+     result = df.groupBy("column").count()
+     
+     # Write the result to an output file
+     result.write.csv("output.csv")
+     
+     spark.stop()
+     ```
+
+   - Place your input file (e.g., `input.csv`) in the same directory as your Python script.
+
+   - Run the PySpark script:
+     ```bash
+     spark-submit spark_script.py
+     ```
+
+   - Check the output file (`output.csv`) generated by Spark.
+
+## HBase
+
+1. **Start HBase Shell:**
+   ```bash
+   hbase shell
+   ```
+
+2. **Execute Commands:**
+   Execute HBase commands line by line in the terminal. Alternatively, execute commands from a file:
+   ```bash
+   hbase shell /file.txt
+   ```
+
+## Hive
+
+1. **Start Hive:**
+   ```bash
+   hive
+   ```
+
+2. **Execute Commands:**
+   Execute Hive commands line by line in the terminal.
+
+   ** To run Hive in the directory you're in:**
+   
+   Execute the following command:
+
+   ```bash
+   $HIVE_HOME/bin/schematool -initSchema -dbType derby
+   ```
+
+   This command initializes the schema and database type (in this case, Derby) for Hive. If you want to restart this installation, simply delete the schema and Derby files or any other files created by it.
+
+---
+
+
+This guide provides basic steps to set up and use various Big Data tools in a laboratory environment. Additional configurations and optimizations may be required based on specific requirements and use cases.
