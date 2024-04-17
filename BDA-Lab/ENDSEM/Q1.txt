@@ -1,0 +1,152 @@
+Bulbasaur	Grass	Poison	318	45	49	49	65	65	45	1	False
+Ivysaur	Grass	Poison	405	60	62	63	80	80	60	1	False
+Venusaur	Grass	Poison	525	80	82	83	100	100	80	1	False
+VenusaurMega Venusaur	Grass	Poison	625	80	100	123	122	120	80	1	False
+Charmander	Fire	309	39	52	43	60	50	65	1	False
+Charmeleon	Fire	405	58	64	58	80	65	80	1	False
+Charizard	Fire	Flying	534	78	84	78	109	85	100	1	False
+CharizardMega Charizard X	Fire	Dragon	634	78	130	111	130	85	100	1	False
+CharizardMega Charizard Y	Fire	Flying	634	78	104	78	159	115	100	1	False
+Squirtle	Water	314	44	48	65	50	64	43	1	False
+Wartortle	Water	405	59	63	80	65	80	58	1	False
+
+Q1)
+mapper.py
+
+#!/usr/bin/env python
+
+import sys
+
+# Input comes from STDIN (standard input)
+for line in sys.stdin:
+    # Remove leading and trailing whitespace
+    line = line.strip()
+    # Split the line into words
+    words = line.split("\t")
+    # Check if the Type1 is "Bug" or "Poison"
+    if len(words) == 13 and (words[1] == "Bug" or words[1] == "Poison"):
+        # Output Type1 and Legendary
+        print(words[1] + "\t" + words[12])
+
+reducer.py
+#!/usr/bin/env python
+
+import sys
+
+current_type1 = None
+current_legendary = None
+
+# Input comes from STDIN
+for line in sys.stdin:
+    # Remove leading and trailing whitespace
+    line = line.strip()
+    # Split the line into Type1 and Legendary
+    type1, legendary = line.split("\t")
+    
+    # If this is the first iteration or the Type1 changes
+    if current_type1 != type1:
+        # If it's not the first iteration, print the previous Type1 and Legendary
+        if current_type1:
+            print(current_type1 + "\t" + str(current_legendary))
+        # Update the current Type1 and Legendary
+        current_type1 = type1
+        current_legendary = 0
+
+    # Update the Legendary count if it's True
+    if legendary == "True":
+        current_legendary += 1
+
+# Output the last Type1 and Legendary
+if current_type1:
+    print(current_type1 + "\t" + str(current_legendary))
+
+cat pokemon_data.txt | ./mapper.py | sort | ./reducer.py
+
+
+Q2) Write a mapreduce (separate mapper reducer files) to find the pokemon name based on the speed greater than 100 in dataset
+
+mapper.py
+
+#!/usr/bin/env python
+
+import sys
+
+# Input comes from STDIN (standard input)
+for line in sys.stdin:
+    # Remove leading and trailing whitespace
+    line = line.strip()
+    # Split the line into words
+    words = line.split("\t")
+    # Check if the speed is greater than 100
+    if len(words) == 13 and int(words[9]) > 100:
+        # Output the Pokémon name
+        print(words[0])
+
+
+reducer.py
+
+#!/usr/bin/env python
+
+import sys
+
+# Input comes from STDIN
+for line in sys.stdin:
+    # Remove leading and trailing whitespace
+    line = line.strip()
+    # Output the Pokémon name
+    print(line)
+
+cat pokemon_data.txt | ./mapper.py | sort | ./reducer.py
+
+Q3) Write a mapreduce (separate mapper reducer files) to find the top 10 pokemon with highest attack stats in dataset 
+
+mapper.py
+
+#!/usr/bin/env python
+
+import sys
+
+# Input comes from STDIN (standard input)
+for line in sys.stdin:
+    # Remove leading and trailing whitespace
+    line = line.strip()
+    # Split the line into words
+    words = line.split("\t")
+    # Check if the line has all necessary columns
+    if len(words) == 13:
+        # Output attack stat and Pokémon name as key-value pair
+        print(words[5] + "\t" + words[0])
+
+
+reducer.py
+
+#!/usr/bin/env python
+
+import sys
+
+top_10 = []
+
+# Input comes from STDIN
+for line in sys.stdin:
+    # Remove leading and trailing whitespace
+    line = line.strip()
+    # Split the line into attack stat and Pokémon name
+    attack, name = line.split("\t")
+    # Convert attack stat to integer
+    attack = int(attack)
+    
+    # If the list is less than 10 or the current attack is greater than the smallest attack in the list
+    if len(top_10) < 10 or attack > top_10[0][0]:
+        # If the list has already 10 items, remove the smallest one
+        if len(top_10) >= 10:
+            top_10.pop(0)
+        # Add the current attack and Pokémon name to the list
+        top_10.append((attack, name))
+        # Sort the list based on attack in descending order
+        top_10.sort(reverse=True)
+
+# Output the top 10 Pokémon with the highest attack stats
+for item in top_10:
+    print(item[1] + "\t" + str(item[0]))
+
+cat pokemon_data.txt | ./mapper.py | sort | ./reducer.py
