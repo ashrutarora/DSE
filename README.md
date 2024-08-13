@@ -1,6 +1,16 @@
 # 🎓 Data Science & Engineering Lab Codes Repository @ MIT Manipal
 
-Welcome to the **Data Science & Engineering** lab codes repository! This collection includes lab codes from various semesters, providing a comprehensive reference for students and enthusiasts alike. 🚀
+Welcome to my **Data Science & Engineering** lab codes repository! This collection includes lab codes from various semesters, providing a comprehensive reference for students and enthusiasts alike. 🚀
+
+---
+
+**Note:** 
+
+The subjects listed might occur in different semesters based on curriculum changes. Please review your curriculum carefully to ensure you have access to all relevant materials.
+
+`Check the codes according to the subject names, not by semesters.`
+
+---
 
 ## 📚 Semester-wise Lab Codes
 
