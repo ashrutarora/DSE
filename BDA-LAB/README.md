@@ -1,6 +1,4 @@
-Here's a concise `README.md` for your "BDA (Big Data Analytics) Lab" folder:
 
----
 
 # BDA (Big Data Analytics) Lab
 
